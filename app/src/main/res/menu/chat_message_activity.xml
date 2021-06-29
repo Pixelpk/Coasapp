@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_action_video"
+        android:icon="@drawable/ic_video_call_white_24dp"
+        android:title="@string/menu_chat_message_video"
+        app:iconTint="@color/white"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_action_audio"
+        android:icon="@drawable/ic_phone_white_24dp"
+        android:title="@string/menu_chat_message_audio"
+        app:iconTint="@color/white"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_bargain"
+        android:icon="@mipmap/sportscarwhite"
+        android:title="Bargain"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_block"
+        android:title="Block" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:visible="false" />
+
+</menu>

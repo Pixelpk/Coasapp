@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                tools:context="com.coasapp.coas.bargain.VehicleMapsActivity" />
+
+            <TextView
+                android:id="@+id/textViewDistance"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:background="#80fafafa"
+                android:gravity="center"
+                android:text="Loading..." />
+
+            <TextView
+                android:id="@+id/imageViewStart"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="8dp"
+                android:visibility="gone"
+                android:textSize="12sp"
+                android:textColor="#fff"
+                android:lineSpacingExtra="-5dp"
+                android:background="@drawable/circle_start"
+                android:gravity="center"
+                android:text="Start"  />
+
+            <TextView
+                android:id="@+id/imageViewPickup"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="8dp"
+                android:textSize="12sp"
+                android:visibility="gone"
+                android:textColor="#fff"
+                android:lineSpacingExtra="-5dp"
+                android:background="@drawable/circle_pickup"
+                android:gravity="center"
+                android:text="Pickup\n&amp;\nGo" />
+
+            <TextView
+                android:id="@+id/imageViewDropOff"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="8dp"
+                android:visibility="gone"
+                android:textSize="12sp"
+                android:textColor="#fff"
+                android:lineSpacingExtra="-5dp"
+                android:background="@drawable/circle_dropoff"
+                android:gravity="center"
+                android:text="Dropoff"  />
+
+            <ImageView
+                android:id="@+id/imageViewExtNav"
+                android:layout_gravity="right"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/openapps128" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutImages"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewAdd"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="8dp">
+
+                <ImageView
+                    android:id="@+id/textView34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@mipmap/upload_img" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/single_my_product_images" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tripStatus"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinnerTrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/TripStatus2" />
+
+
+            <Button
+                android:id="@+id/buttonUpdate"
+                style="@style/DefaultButtonStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:padding="4dp"
+                android:text="Update" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutDriver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/layoutLoad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:visibility="gone">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Provide Picture of Load"
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewCarReg"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/buttonCarReg"
+                    style="@style/DefaultButtonStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="4dp"
+                    android:text="Upload"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/progress_dialog" />
+
+</FrameLayout>

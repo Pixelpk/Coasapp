@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.coasapp.coas.general.NewRegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bursa_bg" />
+
+    <FrameLayout
+        android:id="@+id/layout_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutMain"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:visibility="gone">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageViewProfile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/holder12" />
+
+        <ImageView
+            android:id="@+id/imageViewEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:srcCompat="@mipmap/button_add" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutP1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/layout_spinner_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="@string/enter_phone_number"
+                    android:inputType="phone"
+                    android:textColor="#fff"
+                    android:textColorHint="#fafafa"
+                    app:backgroundTint="#fff" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_email_address"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/choose_your_date_of_birth"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="YOU MUST BE 13 or older TO REGISTER on coasapp!"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <WebView
+                android:id="@+id/webViewTerms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/i_agree_reg"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <RadioButton
+                    android:id="@+id/radioButtonDisagree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#fff"
+                    android:text="Disagree "
+                    android:textColor="#fff" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonAgree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#fff"
+                    android:text="Agree"
+                    android:textColor="#fff" />
+            </RadioGroup>
+
+            <ImageView
+                android:id="@+id/buttonNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@mipmap/enter_large"
+                android:text="@string/login" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutP2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <!--
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/editTextDob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="@string/choose_your_date_of_birth"
+                            android:textColor="#fff"
+                            android:textColorHint="#fafafa"
+                            app:backgroundTint="#fff" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewNotNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:text="@string/not_now"
+                    android:textColor="#fff" />
+
+                <ImageView
+                    android:id="@+id/buttonNext2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@mipmap/enter_large" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutP3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <!--
+                        <WebView
+                            android:id="@+id/webViewTerms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/i_agree_reg"
+                            android:textColor="#fff"
+                            android:textSize="18sp" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonDisagree"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="#fff"
+                                android:text="Disagree "
+                                android:textColor="#fff" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonAgree"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="#fff"
+                                android:text="Agree"
+                                android:textColor="#fff" />
+                        </RadioGroup>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutP4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textViewEnteredPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Is your mobile number correct?"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <RadioButton
+                    android:id="@+id/radioButtonNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#fff"
+                    android:text="no "
+                    android:textColor="#fff" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#fff"
+                    android:text="Yes"
+                    android:textColor="#fff" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutP5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter First &amp; Last Name"
+                android:inputType="textPersonName|textCapWords"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextOTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter OTP"
+                android:inputType="numberSigned"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Create Pin (Must be 6 digit)"
+                android:inputType="numberPassword"
+                android:maxLength="6"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewResend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:text="Click to Resend OTP"
+                    android:textColor="#fff" />
+
+                <Button
+                    android:id="@+id/buttonNext4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="8dp"
+                    android:drawableRight="@mipmap/enter_large"
+                    android:text="@string/register_now" />
+            </RelativeLayout>
+
+            <!--  <ImageView
+                  android:id="@+id/buttonNext3"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="right"
+                  android:layout_marginTop="8dp"
+                  android:layout_marginRight="8dp"
+                  android:src="@mipmap/enter_large" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutP6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone">
+
+
+            <!-- <androidx.appcompat.widget.AppCompatEditText
+                 android:id="@+id/editTextOTP"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:hint="Enter OTP"
+                 android:inputType="numberSigned"
+                 android:textColor="#fff"
+                 android:textColorHint="#fafafa"
+                 app:backgroundTint="#fff" />
+
+             <androidx.appcompat.widget.AppCompatEditText
+                 android:id="@+id/editTextPassword"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:hint="Create Pin (Must be 6 digit)"
+                 android:inputType="numberPassword"
+                 android:maxLength="6"
+                 android:textColor="#fff"
+                 android:textColorHint="#fafafa"
+                 app:backgroundTint="#fff" />
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center_vertical"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/textViewResend"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentLeft="true"
+                     android:layout_centerVertical="true"
+                     android:padding="8dp"
+                     android:text="Click to Resend OTP"
+                     android:textColor="#fff" />
+
+                 <ImageView
+                     android:id="@+id/buttonNext4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                     android:layout_centerVertical="true"
+                     android:layout_marginRight="8dp"
+                     android:src="@mipmap/enter_large" />
+             </RelativeLayout>
+ -->
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/progress_dialog" />
+
+</RelativeLayout>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/big_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+
+
+                    <Switch
+                        android:padding="8sp"
+                        android:id="@+id/switchNotifications"
+                        android:text="Notifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageViewProfile"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="32dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="COAS ID:  " />
+
+                        <TextView
+                            android:id="@+id/textViewCoasId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text=""
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="Name" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextCountry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="Country" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/textViewMsgCallEncrypted"
+                        android:layout_width="match_parent"
+                        android:drawableStart="@drawable/ic_baseline_lock_white"
+                         android:drawablePadding="4dp"
+                        android:drawableTint="@color/black_or_white"
+                        android:layout_height="wrap_content"
+                        android:text="@string/messages_to_this_chat_and_calls_are_now_secured_with_end_to_end_encryption" />
+                </LinearLayout>
+            </ScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <Button
+            android:id="@+id/buttonChat"
+            android:visibility="gone"
+            style="@style/DefaultButtonStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CHAT" />
+    </LinearLayout>
+
+    <include layout="@layout/progress_dialog" />
+</FrameLayout>

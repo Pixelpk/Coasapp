@@ -1,0 +1,2 @@
+keypassword: coasappnew
+aliaspassword: coasapp123

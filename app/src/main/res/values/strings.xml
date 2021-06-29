@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="app_name">COASAPP</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="application_key">370beed4e16eca76aa1ff2e4a2521b4cf</string>
+    <string name="default_server_url">https://apps.applozic.com</string>
+    <string name="default_mqtt_server_url">tcp://apps.applozic.com:1883</string>
+    <string name="default_media_location_folder">Applozic</string>
+    <string name="take_order_userid">ApplozicShop</string>
+    <string name="time">Time</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="confirm">Confirm</string>
+    <string name="reject">Reject</string>
+    <!-- support or admin  contact information ...please add details here  -->
+    <string name="invite_message">Hey, check out Applozic -
+        Plug &amp; Play Messaging: http://www.applozic.com</string>
+    <string name="facebook_app_id">2194468880571702</string>
+    <string name="Qty">Qty</string>
+    <string name="log_out_successful">Log out successful</string>
+    <string name="forgot_password">CAN\'T SIGN IN?</string>
+    <string name="email">Email</string>
+    <string name="phone_length">10</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">REGISTER</string>
+    <string name="phone">Phone Number</string>
+    <string name="upload_profile_picture">Upload Profile Picture</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string-array name="condition">
+        <item>Select Condition</item>
+        <item>New</item>
+        <item>Used</item>
+    </string-array>
+
+    <string-array name="condition2">
+        <item>Any</item>
+        <item>New</item>
+        <item>Used</item>
+    </string-array>
+
+    <string name="adults">Adults</string>
+    <string name="children">Children\n(Age 2 to 12)</string>
+    <string name="infants">Infants\n(Under 2 years)</string>
+
+
+    <string-array name="Sorting">
+        <item>Latest</item>
+        <item>High</item>
+        <item>Low</item>
+    </string-array>
+    <string-array name="Children">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="bargain_to_drive">Bargain to Driver</string>
+
+    <string-array name="Adults2">
+
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="Seats">
+
+
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="Bed">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="BathType">
+        <item>Private</item>
+        <item>Shared</item>
+    </string-array>
+
+
+    <string-array name="VehType">
+        <item>Select</item>
+        <item>Van/SUV</item>
+        <item>Cars</item>
+        <item>Pickup Truck</item>
+        <item>Box Truck</item>
+    </string-array>
+
+    <string-array name="VehBrand">
+        <item>Select</item>
+        <item>Toyota</item>
+        <item>Suzuki</item>
+        <item>Honda</item>
+    </string-array>
+    <string-array name="VehModel">
+        <item>Select</item>
+        <item>Corolla</item>
+        <item>Swift</item>
+        <item>Jazz</item>
+    </string-array>
+    <string-array name="appCat">
+        <item>Select</item>
+        <item>Renting</item>
+        <item>Shopping</item>
+        <item>Bargain</item>
+    </string-array>
+    <string-array name="appOrder">
+        <item>Select</item>
+        <item>S000001</item>
+        <item>S000002</item>
+        <item>S000003</item>
+    </string-array>
+    <string name="u_i_agree_to_the_terms_and_conditions_u">By proceeding to the next step, I agree to the </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="do_you_have_non_expired_driver_s_license">Do you have non expired driver\'s license</string>
+    <string name="are_you_willing_to_lift_and_carry_atleast_50_lbs_up_a_flight_or_stairs">Are you willing to lift and carry atleast 50 lbs up a flight or stairs?</string>
+    <string name="have_you_been_convicted_of_a_felony_in_the_past_7_years">Have you been convicted of a felony in the past 7 years?</string>
+    <string name="government_id">Government ID</string>
+    <string name="country">Country</string>
+    <string name="currency">Currency</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="deactivate_your_account">Deactivate Your Account</string>
+    <string name="contact_seller">Contact Seller</string>
+    <string name="clear_house_rules_you_want_your_visitors_to_nfollow">House Rules You want your visitors to follow</string>
+    <string name="apt_suit_if_any">Apt/Suit (if any)</string>
+    <string name="driver_first_name">Driver First Name</string>
+    <string name="driver_last_name">Driver Last Name</string>
+    <string name="in_the_past_7_years_have_you_ever_been_charged_with_dwi">In the past 7 years have you ever been charged with DWI?</string>
+    <string name="i_also_agree_not_to_share_my_personal_phone">I also, agree NOT to share my personal phone number, email address and or any other form of communication to any user in COASAPP. Doing so, may result in suspension of my account and or being remove from the COASAPP platform</string>
+    <string name="driver_middle_name">Driver Middle Name</string>
+    <string name="terms"><html><body>By Proceeding to the next step, I agree to the <a href='file:///android_asset/regulation.htm'></a>. I also, agree NOT to share my personal phone number, email address and or any other term of communication to any user in COASAPP. Doing so, may result in suspension of my account or being removed from the COASAPP platform. As a seller you are responsible to pay taxes to your city/state’s proper authorities. Platform fee is 6% (of listing price) you MUST pay in order for your item(s) to appear in shopping center and after our approval.</body></html></string>
+    <string name="i_agree_reg"><![CDATA[I Agree on Terms & Conditions]]></string>
+    <string name="cancel">Cancel</string>
+    <string name="terms_link">By Proceeding to the next step, I agree to the User Terms and Conditions. I also, agree NOT to share my personal phone number, email address and or any other form of communication to any user in COASAPP. Doing so, may result in suspension of my account or being removed from the COASAPP platform.
+</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="internet_connection_not_available">No internet connection</string>
+    <string name="you_need_network_access_for_delete">You need to have network access for deleting Conversation </string>
+    <string name="applozic_server_error">Oops! You caught an error, try again later</string>
+    <string name="you_need_network_access_for_block_or_unblock">You need to have network access for block/unblock a user</string>
+    <string name="internet_connection_for_group_name_info">Your phone needs an Internet connection to change the group name</string>
+    <string name="you_dont_have_any_network_access_info">You don\'t have any network access now</string>
+    <string name="failed_to_leave_group">Failed to leave group</string>
+    <string name="user_is_already_exists">User already exists in group</string>
+    <string name="delete_conversation_failed">Delete failed</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_add_contact">Create a new contact</string>
+    <string name="no_contacts">No Contacts Found</string>
+    <string name="search_hint">Search...</string>
+    <string name="phone_number_not_present">Phone number is not present</string>
+    <string name="zero_friends_on_phone">No matching contact found on phone contacts but you can still send message by entering the email, userId or phone number</string>
+    <string name="delete_thread_text">Deleting....</string>
+    <string name="search_title">Search</string>
+    <string name="applozic_user_already_in_a_group">Already added to the [groupType]</string>
+    <string name="applozic_contacts_loading_info">Loading please wait...</string>
+    <string name="applozic_contacts_loading_error">You need to have network access for loading contacts</string>
+    <string name="applozic_enter_group_name">Please enter a group name to proceed..</string>
+    <string name="snap_text">Oh Snap!</string>
+    <string name="account_disconnection_message">We’re sorry but messaging is not \navailable at the moment.\nPlease contact support for more details</string>
+    <string name="powered_by_applozic_message">We are powered by Applozic</string>
+    <string name="rupee_symbol">\u20B9</string>
+
+
+    <!-- support or admin  contact information ...please add details here  -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_renting">Renting</string>
+    <string name="title_messenger">Chats</string>
+    <string name="title_shopping">Buy &amp; Sell</string>
+
+
+    <string name="book">Book</string>
+    <string name="desc">
+        <li>Item one</li>
+        \n<li>Item two</li>
+        \n<li>Item three</li>
+    </string>
+    <string name="first_name">First Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="last_name">Last Name</string>
+    <string name="save">Save</string>
+    <string name="payable_amount">Payable Amount</string>
+    <string name="pay">Pay</string>
+    <string name="submit">Save</string>
+    <string name="number_of_guests">Number of Guests</string>
+    <string name="number_of_bedrooms">Number of Bedrooms</string>
+    <string name="title">Title</string>
+    <string name="address">Address</string>
+    <string name="description">Description</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="price_per_day">Price per day</string>
+    <string name="set_default_image">Set Default Image</string>
+    <string name="tags">Tags</string>
+
+    <string-array name="houseType">
+        <item>Select Room Type</item>
+        <item>Room</item>
+        <item>House</item>
+    </string-array>
+
+    <string-array name="shareType">
+        <item>Select what will guests have</item>
+        <item>Entire House/Room</item>
+        <item>Shared Room</item>
+        <item>Private Room</item>
+    </string-array>
+
+    <string-array name="bookType">
+        <item>Select Booking Option</item>
+        <item>Hourly</item>
+        <item>Nightly</item>
+    </string-array>
+    <string-array name="bookType2">
+        <item>Any</item>
+        <item>Hourly</item>
+        <item>Nightly</item>
+    </string-array>
+
+    <!--
+         Used for the AlphabetIndexer in ContactsListFragment to provide quick navigation by
+         alphabet using ListView fast scroll.
+    -->
+    <string name="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+    <!--
+         When using ContactsContract.Contacts#CONTENT_FILTER_URI to search contacts, a match occurs
+         when using a number of different fields, such as name, e-mail address, address, phone
+         number, etc. When a match occurs that is not the name, there is currently no way to tell
+         which other field was matched. This string is displayed in the secondary display text in
+         ContactsListFragment when a search query match occurs that is not the display name.
+    -->
+    <string name="search_match_other">Matches Other Field</string>
+    <string name="invite">Invite your friends</string>
+    <!-- The deafult tile size -->
+
+    <string name="contact_permission">Contact permission are needed to access</string>
+    <string name="storage_permission">Storage permission are needed to access</string>
+    <string name="location_permission">Location permission are needed to access</string>
+    <string name="phone_call_permission">Phone call permission are needed to access</string>
+    <string name="phone_camera_permission">Camera permission are needed to access</string>
+    <string name="record_audio">Audio recording permission needed</string>
+    <string name="camera_audio_permission">Camera and record audio permission are needed to access</string>
+
+    <string name="contact_permission_not_granted">Permission were not granted for Contact</string>
+    <string name="storage_permission_not_granted">Permissions were not granted for Storage</string>
+    <string name="location_permission_not_granted">Permissions were not granted for Location</string>
+    <string name="phone_state_permission_not_granted">Permissions were not granted for Phone state</string>
+    <string name="phone_call_permission_not_granted">Permission were not granted for Phone call</string>
+    <string name="phone_camera_permission_not_granted">Permission were not granted for Camera</string>
+    <string name="record_audio_permission_not_granted">Permissions were not granted for Audio recording</string>
+    <string name="audio_or_camera_permission_not_granted">Permission were not granted for Camera or Audio recording</string>
+
+    <string name="contact_permission_granted">Contacts Permission have been granted</string>
+    <string name="storage_permission_granted">Storage Permissions have been granted</string>
+    <string name="location_permission_granted">Location Permissions has been granted</string>
+    <string name="phone_state_permission_granted">Phone state Permissions has been granted</string>
+    <string name="phone_call_permission_granted">Phone call Permission has been granted</string>
+    <string name="phone_camera_permission_granted">Camera permission has been granted</string>
+    <string name="record_audio_permission_granted">Audio Record permissions has been granted</string>
+    <string name="phone_camera_and_audio_permission_granted">Camera and audio permissions has been granted</string>
+    <string name="mobicom_max_attachment_warning">Max attachment limit reached</string>
+    <string name="mobicom_select_attachment_text">Select at least one attachment</string>
+    <string name="audio_recording_send_text">Tap on Start to record audio</string>
+    <string name="applozic_audio_permission_missing">Unable to launch audio recorder.</string>
+    <string name="applozic_message_info">Message Info</string>
+    <string name="applozic_message_info_no_network">Not able to fetch message info.</string>
+    <string name="applozic_user_profile_heading">Profile</string>
+    <string name="send_message_to">Send to..</string>
+    <string name="group_members_limit_exceeds">Limit reached, remove someone from the Group first</string>
+    <string name="please_wait_creating_group_of_two">Please wait...</string>
+    <string name="chats">Chats</string>
+    <string name="refresh">Refresh</string>
+    <string name="start_New">Start New</string>
+    <string name="dial">Dial</string>
+    <string name="next">Next</string>
+    <string name="done">Done</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera_option">Camera</string>
+    <string name="logout">Logout</string>
+    <string name="copy">Copy</string>
+    <string name="forward">Forward</string>
+    <string name="resend">Resend</string>
+    <string name="info">Info</string>
+    <string name="share">Share</string>
+    <string name="self_destruct">Self Destruct</string>
+    <string name="delete_group">Delete group</string>
+    <string name="exit_group">Exit group</string>
+    <string name="message">Message</string>
+    <string name="al_location">:location</string>
+    <string name="al_file">:file</string>
+    <string name="al_audio">:audio</string>
+    <string name="al_camera">:camera</string>
+    <string name="al_video">:video</string>
+    <string name="al_contact">:contact</string>
+    <string name="al_price">:price</string>
+    <string name="status">status</string>
+    <string name="name">Name</string>
+    <string name="Group">GROUP</string>
+    <string name="Contact">CONTACT</string>
+    <string name="participants">Participants</string>
+    <string name="Add_caption">Add caption...</string>
+    <string name="New_Attachment">New Attachment</string>
+    <string name="send_location">Send Location</string>
+    <string name="send_your_current_location">Send your current Location</string>
+    <string name="Add_Contacts">Add Contacts</string>
+    <string name="stop">STOP</string>
+    <string name="profile_status">Profile Status</string>
+    <string name="no_status">No Status</string>
+    <string name="online">online</string>
+    <string name="notifications">Notifications</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="sales_manager">Sales Manager</string>
+    <string name="display_name">Display Name</string>
+    <string name="kb45">45kb</string>
+    <string name="message_text">Message Text</string>
+    <string name="read">Read</string>
+    <string name="delivered">Delivered</string>
+    <string name="file_name_will_come_here_for_attachment">file name will come here for attachment</string>
+    <string name="mb_10">10 MB</string>
+    <string name="mobile_number">mobile number</string>
+    <string name="schedule">Schedule</string>
+    <string name="delivery_status">delivery status</string>
+    <string name="testTime">testTime</string>
+    <string name="created_at_time">created at time</string>
+    <string name="add_member">Add member</string>
+    <string name="no_groups">No Groups</string>
+    <string name="remove_image">Remove image</string>
+    <string name="applozic_failed_to_load_contact">Failed to load Contact</string>
+    <string name="applozic_Cropping_failed">Cropping failed</string>
+    <string name="applozic_resending_attachment">Resending attachment....</string>
+    <string name="Location">Location</string>
+    <string name="processing_please_wait">Processing... Please wait</string>
+    <string name="error">error</string>
+    <string name="mute_group_for">Mute Group For..</string>
+    <string name="mute_user_for">Mute user for..</string>
+    <string name="eight_Hours">8 Hours</string>
+    <string name="one_week">1 Week </string>
+    <string name="one_year"> 1 Year </string>
+    <string name="file_does_not_exist">file does not Exist</string>
+    <string name="copied_message">Copied message</string>
+    <string name="data_usage">Data Usage</string>
+    <string name="missed">Missed</string>
+    <string name="hold_to_record_release_to_send">Hold to record , release to send</string>
+    <string name="slide_to_cancel">Slide to cancel</string>
+    <string name="tap_on_mic_button_to_record_audio">Tap on mic button to start audio recording</string>
+    <string name="profile_contact">No Contact number</string>
+    <string name="profile_contact_number">Contact Number</string>
+    <string name="user_name">User Name</string>
+    <string name="powered_by_applozic">Powered By Applozic</string>
+
+
+    <string-array name="TripStatus">
+        <item>Select</item>
+        <item>Pickup</item>
+        <item>Dropoff</item>
+        <!-- <item>Cancelled</item>-->
+    </string-array>
+
+    <string-array name="TripStatus2">
+        <item>Select</item>
+        <item>Item Pickup</item>
+        <item>Item Delivered</item>
+        <!-- <item>Cancelled</item>-->
+    </string-array>
+
+
+    <!--Configs    -->
+    <string name="sender_id">150862126464</string>
+
+    <!--LoginActivity-->
+    <string name="user_login">Login as</string>
+    <string name="user_logged_in">Loggin in as %s …</string>
+    <string name="user">User %1$s</string>
+    <string name="login_chat_login_error">Login Chat error. Please relogin. Error %s</string>
+    <string name="loading_users_error">Loading users error. Error %s</string>
+    <string name="loading_users_empty">There are no such users in the application.</string>
+
+    <!--DialogsActivity-->
+    <string name="yesterday">Yesterday</string>
+
+    <!--CreateDialogActivity-->
+    <string name="last_activity">Last activity:</string>
+    <string name="new_chat">New Chat</string>
+
+    <!--ChatDialogDetailsActivity-->
+    <string name="occupants">Occupants</string>
+    <string name="you">You</string>
+    <string name="creator">Creator</string>
+    <string name="admin">Admin</string>
+    <string name="view_details">View Details</string>
+    <string name="edit_group_description">Edit Group Description</string>
+    <string name="group_description">Group Description</string>
+    <string name="put_there_some_information_about_group">Put there some additional information about group</string>
+    <string name="add_to_admins">Add to admins</string>
+    <string name="remove_from_admins">Remove from admins</string>
+    <string name="remove_from_occupants">Remove from occupants</string>
+    <string name="edit_group_name">Edit Group Name</string>
+    <string name="group_name">Group Name</string>
+    <string name="put_name_for_group">Put name for group</string>
+    <string name="change_group_avatar">Change dialog avatar</string>
+    <string name="change_group_name">Change group name</string>
+    <string name="change_group_description">Change group description</string>
+    <string name="add_occupants">Add occupants</string>
+    <string name="remove_occupants">Remove occupants</string>
+
+    <!--SelectUsersActivity-->
+    <string name="not_user_to_select">Not users to select</string>
+
+    <!--Action bar-->
+    <string name="title_login_activity">Login</string>
+    <string name="title_current_user">Logged in as %1$s</string>
+    <string name="title_select_users_activity">Select user(s)</string>
+    <string name="action_start_logout">Logout</string>
+    <string name="action_create">Create</string>
+    <string name="action_done">Done</string>
+    <string name="action_close">Close</string>
+    <string name="action_toggle_speaker">Toggle speaker</string>
+    <string name="action_toggle_mute">Toggle mute</string>
+
+    <!--Menu-->
+    <string name="menu_chat_dialog_logout">Logout</string>
+    <string name="menu_chat_message_video">Video call</string>
+    <string name="menu_chat_message_audio">Audio call</string>
+
+    <!--ChatDialogs-->
+    <string name="chat_login">Login…</string>
+    <string name="chat_list_empty">There are no any chats yet</string>
+    <string name="load_avatar_error">Loading avatar error %s</string>
+    <string name="load_avatar_success">Loading avatar success</string>
+    <string name="group_name_error">Name cannot be empty</string>
+
+    <!--ChatMessages-->
+    <string name="chat_text_hint">Message</string>
+    <string name="chat_typing">%s is typing…</string>
+    <string name="message_attachment">Attachment</string>
+    <string name="loading_attachment_error">Loading attachment error %s</string>
+    <string name="sending_message_error">Sending message error %s</string>
+    <string name="fbd_scroll_counter_label">%s new</string>
+
+    <!--Settings-->
+    <string name="settings_label">Settings</string>
+    <string name="edit_username">Edit User Name</string>
+    <string name="user_name_hint">User Name</string>
+    <string name="username_description">Enter user name</string>
+    <string name="username_can_not_be_empty">User name can not be empty</string>
+
+    <!--AttachmentPreview-->
+    <string name="attachment_preview_label">Attachment Preview</string>
+
+    <!--OccupantPreview-->
+    <string name="occupant_preview_label">Occupant Preview</string>
+
+    <!--CreateChatDialogDetail-->
+    <string name="create_chat_detail_preview_label">Group Details</string>
+
+    <!--Notifications-->
+    <string name="you_have_got_new_incoming_call_open_app_to_manage_it">You have got new Incoming Call. Open app to manage it</string>
+    <string name="calls_channel_name">Calls</string>
+    <string name="calls_channel_description">Notifications about incoming calls</string>
+    <string name="incoming_call">Incoming Call</string>
+    <string name="chats_channel_name">Chats</string>
+    <string name="chats_channel_description">Notifications about new messages in chats</string>
+    <string name="new_message">New message</string>
+    <string name="enter_your_reply_here">Enter your reply here</string>
+    <string name="reply">Reply</string>
+    <string name="you_format">You: %s</string>
+
+    <!--CallActivity-->
+    <string name="call_status_connect">Connect…</string>
+    <string name="call_status_connected">Connected</string>
+    <string name="call_status_disconnected">Disconnected</string>
+    <string name="call_status_closed">Closed</string>
+    <string name="call_status_hang_up">Hung up</string>
+    <string name="camera_switch_error">Failed to switch camera"</string>
+
+    <string name="incoming_audio_call_title">Incoming Audio Call</string>
+    <string name="incoming_video_call_title">Incoming Video Call</string>
+    <string name="incoming_audio_call_opponents">on call:</string>
+    <string name="outgoing_call_ringing">Ringing</string>
+
+    <string name="title_incoming_call">Incoming call</string>
+    <string name="title_video_call">Video call</string>
+    <string name="title_audio_call">Audio call</string>
+
+    <string name="status_connected">Connected</string>
+    <string name="status_closed">Closed</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="connection_is_disconnected">The connection is disconnected</string>
+    <string name="connection_is_reconnected">The connection is reconnected</string>
+    <string name="snackbar_dismiss">Dismiss</string>
+
+    <!-- Errors -->
+    <string name="error_credentials_empty">The App class should contain ConnectyCube credentials. Register new account and application at https://admin.connectycube.com
+        then put Application credentials from Overview page + Account key from https://admin.connectycube.com/account/settings</string>
+    <string name="error_users_empty">The user_config.json file should contain at least 2 and max 5 users with format [\"login\":{\"password\":userId}]. Please go to https://admin.connectycube.com and create users in \'Users\' module.</string>
+    <string name="select_users_choose_users">Please, choose at least one participant</string>
+    <string name="error_while_loading_users">Error while loading users</string>
+    <string name="something_went_wrong_try_again_later">Something went wrong, try again later</string>
+    <string name="group_description_can_not_be_empty">Group description can not be empty</string>
+    <string name="group_name_can_not_be_empty">Group name can not be empty</string>
+    <string name="coming_soon">Coming soon</string>
+    <string name="calls_not_allowed">Calls not allowed in user\'s country</string>
+    <string name="chat_connection_problem">It has detected connection problems. Please check your internet connection and try again</string>
+    <string name="limit_users_to_selection">Max %s users possible to selection</string>
+    <string name="error_sending_message">Error sending message</string>
+    <string name="denied_permission">You can\'t go on without an access to %s</string>
+    <string name="login_chat_error_format">Login chat error. Error  %s</string>
+
+    <string name="today">Today</string>
+    <string name="delete">Delete</string>
+    <string name="id_format">id: %s</string>
+    <string name="title_select_call_members">Select call members</string>
+    <string name="parentheses_format">(%s)</string>
+
+    <!--fix for Matisse lib-->
+    <plurals name="error_over_count">
+        <item quantity="one">You can only select one media file</item>
+        <item quantity="many">You can only select up to %1$d media files</item>
+    </plurals>
+    <string name="title_activity_my_location">Map</string>
+    <string name="please_agree_on_a_price_first_through_chatting_then_click_on_the_car_icon_to_send_a_delivery_request">Please agree on a price first through chatting then click on the car icon to send a delivery request to driver. We are NOT responsible for any payment done outside of COASAPP.</string>
+    <string name="enter_pin_number">Enter Pin Number</string>
+    <string name="email_or_phone_number">Phone number</string>
+    <string name="register_now">Create account now</string>
+    <string name="enter_phone_number">Phone Number</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="choose_your_date_of_birth">Choose your Date of Birth</string>
+    <string name="not_now">Not Now</string>
+
+
+    <string name="calls_quickstart_version">Quickstart %s</string>
+    <string name="calls_sdk_version">SDK %s</string>
+    <string name="calls_sign_in_with_qrcode">SIGN IN WITH QR CODE</string>
+    <string name="calls_scanning_a_qrcode_description">Sign in by scanning a QR code found in the Calls Studio of the Sendbird Dashboard</string>
+    <string name="calls_or">Or</string>
+    <string name="calls_sign_in_manually">SIGN IN MANUALLY</string>
+    <string name="calls_sign_in_manually_title">Sign in manually</string>
+    <string name="calls_app_id">App ID</string>
+    <string name="calls_user_id">User ID</string>
+    <string name="calls_access_token">User access token (Optional)</string>
+    <string name="calls_sign_in">SIGN IN</string>
+
+    <string name="calls_empty_nickname">—</string>
+    <string name="calls_user_id_format">User ID: %s</string>
+    <string name="calls_and_character">" · "</string>
+
+    <string name="calls_notification_voice_calling_content">Voice calling from %s</string>
+    <string name="calls_notification_video_calling_content">Video calling from %s</string>
+    <string name="calls_notification_end">END</string>
+    <string name="calls_notification_call">ACCEPT</string>
+
+    <string name="calls_make_a_call">Make a call</string>
+    <string name="calls_make_a_call_description">Enter the user ID of the user you wish to call, then press one of the video or voice call buttons</string>
+    <string name="calls_history">History</string>
+    <string name="calls_no_call_history">No call history</string>
+    <string name="calls_settings">Settings</string>
+    <string name="calls_application_information">Application information</string>
+    <string name="calls_application_id">Application ID</string>
+    <string name="calls_sign_out">Sign out</string>
+
+    <string name="calls_muted_this_call">%s is on mute</string>
+    <string name="calls_incoming_voice_call">Incoming voice call&#8230;</string>
+    <string name="calls_incoming_video_call">Incoming video call&#8230;</string>
+    <string name="calls_connecting_call">Connecting&#8230;</string>
+    <string name="calls_calling">Calling&#8230;</string>
+    <string name="calls_video_calling">Video calling&#8230;</string>
+    <string name="calls_ending_voice_call">Ending voice call&#8230;</string>
+    <string name="calls_ending_video_call">Ending video call&#8230;</string>
+
+    <string name="calls_end_result_no_answer">No answer</string>
+    <string name="calls_end_result_canceled">Canceled</string>
+    <string name="calls_end_result_declined">Declined</string>
+    <string name="calls_end_result_completed">Ended</string>
+    <string name="calls_end_result_timed_out">Timed out</string>
+    <string name="calls_end_result_connection_lost">Connection lost</string>
+    <string name="calls_end_result_unknown">Unknown</string>
+    <string name="calls_end_result_accept_failed">Accept failed</string>
+    <string name="calls_end_result_dial_failed">Dial failed</string>
+    <string name="calls_end_result_other_device_accepted">Other device accepted</string>
+    <string name="calls_notification_decline">Decline</string>
+    <string name="calls_notification_accept">Accept</string>
+    <string name="calls_app_name">Coasapp Calls</string>
+    <string name="calls_invalid_notifications_setting_in_dashboard">Turn on notifications on the Sendbird dashboard to allow mobile sign in.</string>
+    <string name="calls_invalid_notifications_not_active_for_qrcode">Mobile sign-in is not enabled. Please first enable notifications on the Sendbird Dashboard.</string>
+    <string name="calls_invalid_for_qrcode">This QR code is not valid. Please generate and scan a user-specific QR code in Calls studio.</string>
+    <string name="messages_to_this_chat_and_calls_are_now_secured_with_end_to_end_encryption">Messages to this chat and calls are now secured with end to end encryption</string>
+    <string name="messages_to_this_chat_are_now_secured_with_end_to_end_encryption">Messages to this chat are now secured with end to end encryption</string>
+    <string name="calls_invalid_qrcode">This QR code is not valid. Go to Calls studio and try scanning your QR code again.</string>
+    <string name="calls_invalid_deep_link">Invalid deep link</string>
+    <string name="calls_deep_linking_to_authenticate_failed">Could not authenticate deep link.</string>
+
+
+</resources>

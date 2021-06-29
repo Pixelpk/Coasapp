@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutAgree"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <CheckBox
+        android:id="@+id/checkBoxAgree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:gravity="center"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/u_i_agree_to_the_terms_and_conditions_u"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textViewTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/terms"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone" />
+
+        <WebView
+            android:id="@+id/webViewTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+        </WebView>
+
+        <TextView
+            android:id="@+id/textViewTermsLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/textViewCommission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/i_also_agree_not_to_share_my_personal_phone"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

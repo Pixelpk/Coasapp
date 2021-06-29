@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_messsenger"
+        android:icon="@mipmap/messenger"
+        android:title="@string/title_messenger" />
+    <item
+        android:id="@+id/navigation_renting"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/title_renting" />
+
+    <item
+        android:id="@+id/navigation_shopping"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="@string/title_shopping" />
+
+    <item
+        android:id="@+id/navigation_bargain"
+        android:icon="@mipmap/sportscar"
+        android:title="@string/bargain_to_drive" />
+</menu>

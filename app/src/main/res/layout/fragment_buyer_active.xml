@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.coasapp.coas.shopping.BuyerActiveFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/places_ic_search"
+            android:imeActionLabel="@string/search_hint" />
+
+        <include layout="@layout/recycler_view" />
+    </LinearLayout>
+
+    <include layout="@layout/progress_dialog" />
+</FrameLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.coasapp.coas.roombook.UploadGovtIDActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/buttonChoose"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/imageViewGovtId"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:text="Click Icon to Choose Image" />
+
+        <ImageView
+            android:id="@+id/imageViewGovtId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/buttonChoose"
+            android:layout_centerInParent="true"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/placeholder" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonChoose"
+        style="@style/DefaultButtonStyle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Submit" />
+
+    <include layout="@layout/progress_dialog" />
+</RelativeLayout>

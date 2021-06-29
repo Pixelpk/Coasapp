@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.coasapp.coas.bargain.AddVehicleActivity">
+
+    <RelativeLayout
+        android:id="@+id/layoutStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="8dp"
+            android:text="" />
+
+        <Switch
+            android:id="@+id/switchOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:text="Set Default Vehicle"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <include
+        layout="@layout/vehicle_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutStatus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp" />
+
+    <include
+        layout="@layout/driver_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutStatus"
+        android:layout_centerInParent="true" />
+
+    <include
+        layout="@layout/driver_kyc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutStatus"
+
+        android:layout_centerInParent="true" />
+
+    <include layout="@layout/progress_dialog" />
+</RelativeLayout>

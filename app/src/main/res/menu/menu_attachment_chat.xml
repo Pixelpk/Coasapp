@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_image_video"
+        android:title="Image" />
+    <item
+        android:id="@+id/action__video"
+        android:title="Video" />
+    <item
+        android:id="@+id/action_voice"
+        android:title="Voice" />
+    <item
+        android:id="@+id/action_contact"
+        android:title="Contact" />
+    <item
+        android:id="@+id/action_location"
+        android:title="Current Location" />
+    <item
+        android:id="@+id/action_document"
+        android:title="Document" />
+</menu>

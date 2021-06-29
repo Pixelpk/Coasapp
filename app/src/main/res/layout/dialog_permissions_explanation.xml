@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The following permissions are needed for the app to function:" />
+
+    <TextView
+        android:id="@+id/textViewContactPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="READ CONTACTS"
+        android:textColor="@color/black_or_white" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To help you connect with your friends &amp; family, COASAPP need to sync your contacts" />
+
+    <TextView
+        android:id="@+id/textViewStoragePermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="WRITE EXTERNAL STORAGE"
+        android:textColor="@color/black_or_white" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To share your files to your friends &amp; family, to upload pictures of your space, products &amp; vehicles" />
+
+    <TextView
+        android:id="@+id/textViewLocationPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="YOUR LOCATION"
+
+        android:textColor="@color/black_or_white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To help you find nearby rooms., profucts &amp; drivers &amp; to share your location to others" />
+
+    <TextView
+        android:layout_width="match_parent"
+android:id="@+id/textViewAudioPermission"
+        android:layout_height="wrap_content"
+        android:text="MICROPHONE"
+        android:textColor="@color/black_or_white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To send voice messages &amp; make voice calls, COASAPP need microphone access" />
+
+    <TextView
+        android:id="@+id/textViewCamPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAMERA"
+        android:textColor="@color/black_or_white" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To make video calls, COASAPP needs access to your phone's camera" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/textViewWindowPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DRAW OVER OTHER APPS"
+        android:textColor="@color/black_or_white" />
+    <TextView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:text="To notify you of incoming calls" />
+</LinearLayout>

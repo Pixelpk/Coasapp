@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutOriginalMessage"
+    android:layout_width="match_parent"
+    android:layout_margin="4dp"
+    android:layout_height="wrap_content"
+    android:background="@color/light_or_dark_grey"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/dividerReply"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewOriginalSender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Sender"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/textViewOriginalMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Original Message"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewOriginal"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:tint="@color/black_or_white"
+        android:src="@drawable/ic_attachment_black_24dp" />
+</LinearLayout>

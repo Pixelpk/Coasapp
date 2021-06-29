@@ -1,0 +1,196 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion = '29.0.2'
+
+    defaultConfig {
+        applicationId "com.coasapp.coas"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 29
+        versionName "1.2.3"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.incremental": "true"]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+
+        abortOnError false
+
+    }
+
+    packagingOptions {
+
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/ECLIPSE_.SF'
+        exclude 'META-INF/ECLIPSE_.RSA'
+        exclude 'project.properties'
+        exclude 'META-INF/INDEX.LIST'
+
+    }
+
+    /* dexOptions {
+
+        preDexLibraries = false
+        javaMaxHeapSize "8g" // 2g should be also OK
+    }*/
+}
+
+ext {
+    sdkVersion = '1.8.1'
+    roomVersion = '2.2.0-beta01'
+    lifecycleVersion = '2.2.0-alpha02'
+    workVersion = '2.1.0'
+    materialVersion = '1.1.0-alpha09'
+    paging_version = "2.1.0"
+    recyclerViewVersion = '1.1.0-beta03'
+}
+
+dependencies {
+    configuration ->
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+        connectycubeComponents(configuration, sdkVersion)
+        androidJetPackComponents(configuration, roomVersion, lifecycleVersion, paging_version, workVersion)
+        androidXComponents(configuration)
+        kotlinComponents(configuration, kotlin_version)
+        externalMediaComponents(configuration)
+
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        //implementation project(':mobicomkitui')
+        //implementation project(':audiovideo')
+        implementation 'com.github.bumptech.glide:glide:4.7.1'
+        implementation 'com.google.android.libraries.places:places:2.0.0'
+
+        implementation 'com.google.android.gms:play-services-maps:15.0.1'
+        kapt 'com.github.bumptech.glide:compiler:4.7.1'
+        implementation 'com.jakewharton.timber:timber:4.7.1'
+
+        implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+        implementation 'com.github.yukuku:ambilwarna:2.0.1'
+        implementation 'com.squareup.picasso:picasso:2.71828'
+        implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+        implementation 'com.google.zxing:core:3.3.0'
+        implementation 'androidx.multidex:multidex:2.0.1' // multidex
+
+        implementation 'com.sendbird.sdk:sendbird-calls:1.3.0' // [Calls]
+        implementation 'com.google.firebase:firebase-core:17.5.0' // [Calls] FCM
+        implementation 'com.google.firebase:firebase-messaging:20.2.4' // [Calls] FCM
+        implementation 'com.github.bumptech.glide:glide:4.11.0'
+        //Note: use this for customization
+        //implementation 'com.applozic.communication.uiwidget:mobicomkitui:5.8.5'
+        //implementation 'com.applozic.communication.uiwidget:audiovideo:2.1.1'
+        implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+        //implementation 'androidx.appcompat:appcompat:1.0.0'
+        //implementation 'com.facebook.android:facebook-android-sdk:4.1.0'
+        implementation "com.google.android.material:material:$materialVersion"
+        //implementation 'androidx.multidex:multidex:2.0.0'
+        implementation 'de.hdodenhof:circleimageview:2.2.0'
+        //implementation 'com.android.support:cardview-v7:22.0'
+        //implementation 'com.android.support:recyclerview-v7:22.0'
+        implementation 'com.github.wseemann:FFmpegMediaMetadataRetriever:1.0.14'
+        implementation 'com.googlecode.libphonenumber:libphonenumber:8.7.0'
+       // implementation 'com.sendbird.sdk:sendbird-calls:1.1.3' // [Calls]
+       // implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+        implementation 'com.google.firebase:firebase-messaging:20.2.1'
+        implementation "com.google.firebase:firebase-core:17.2.1"
+        implementation "com.google.android.gms:play-services-gcm:17.0.0"
+        implementation 'androidx.cardview:cardview:1.0.0'
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.2'
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.2'
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.2'
+        implementation 'com.stripe:stripe-android:8.1.0'
+        implementation 'com.google.code.gson:gson:2.8.5'
+        implementation 'com.google.android.gms:play-services-auth-api-phone:17.3.0'
+        //implementation 'androidx.recyclerview:recyclerview:1.0.0'
+        implementation 'com.flurry.android:analytics:12.0.0@aar'
+        implementation 'com.applandeo:material-calendar-view:1.5.1'
+        implementation 'androidx.browser:browser:1.0.0'
+        implementation "com.timehop.stickyheadersrecyclerview:library:0.4.3"
+        implementation 'com.google.android.play:core:1.7.1'
+        implementation 'com.google.firebase:firebase-analytics:17.4.3'
+
+        // Add the Firebase Crashlytics SDK.
+        implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+        implementation 'com.braintreepayments.api:drop-in:3.3.0'
+        implementation 'com.android.volley:volley:1.1.0'
+
+
+}
+
+private static void connectycubeComponents(configuration, version) {
+    configuration.implementation "com.connectycube:connectycube-android-sdk-chat:$version"
+    configuration.implementation "com.connectycube:connectycube-android-sdk-storage:$version"
+    configuration.implementation("com.connectycube:connectycube-android-sdk-videochat:$version") {
+        exclude group: 'org.webrtc', module: 'google-webrtc'
+    }
+    configuration.implementation "com.connectycube:connectycube-android-sdk-pushnotifications:$version"
+}
+
+
+private static void androidXComponents(configuration) {
+    configuration.implementation "androidx.multidex:multidex:2.0.1"
+    configuration.implementation "androidx.activity:activity-ktx:1.1.0-alpha02"
+    configuration.implementation "androidx.recyclerview:recyclerview:1.1.0-beta03"
+    configuration.implementation 'androidx.appcompat:appcompat:1.0.0'
+    configuration.implementation 'androidx.core:core-ktx:1.0.2'
+    configuration.implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+}
+
+
+private static void androidJetPackComponents(configuration, roomVersion, lifecycleVersion,
+                                             paging_version, workVersion) {
+    configuration.kapt "androidx.room:room-compiler:$roomVersion"
+    configuration.implementation "androidx.room:room-runtime:$roomVersion"
+    configuration.implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    configuration.implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    configuration.implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    configuration.implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    configuration.implementation "androidx.work:work-runtime-ktx:$workVersion"
+}
+
+private static void kotlinComponents(configuration, kotlin_version) {
+    configuration.implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    configuration.implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+}
+
+private static void externalMediaComponents(configuration) {
+    configuration.implementation "com.zhihu.android:matisse:0.5.3-beta1"
+    configuration.implementation 'com.github.yalantis:ucrop:2.2.4'
+    configuration.implementation "com.github.bumptech.glide:glide:4.9.0"
+    configuration.implementation 'com.github.chrisbanes:PhotoView:2.1.4'
+}
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'

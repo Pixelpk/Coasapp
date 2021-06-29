@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollViewDriverKyc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:orientation="vertical"
+ >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Car's Registration"
+                    android:textColor="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewCarReg"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#000"
+                    app:srcCompat="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/buttonCarReg"
+                    style="@style/DefaultButtonStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="4dp"
+                    android:text="Upload" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Car's insurance"
+                    android:textColor="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewInsurance"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#000"
+                    app:srcCompat="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/buttonInsurance"
+                    style="@style/DefaultButtonStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="4dp"
+                    android:text="Upload" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Picture of your car"
+                    android:textColor="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewCar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#000"
+                    app:srcCompat="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/buttonCarImg"
+                    style="@style/DefaultButtonStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="4dp"
+                    android:text="Upload" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextSocial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Social Security Number"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Your Driver's License"
+                    android:textColor="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewLicense"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#000"
+                    app:srcCompat="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/buttonLicense"
+                    style="@style/DefaultButtonStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="4dp"
+                    android:text="Upload" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Car Inspection"
+                    android:textColor="@color/colorPrimary" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewInspection"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#000"
+                    app:srcCompat="@drawable/placeholder" />
+
+                <Button
+                    android:id="@+id/buttonInspection"
+                    style="@style/DefaultButtonStyle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="4dp"
+                    android:text="Upload" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary" />
+
+            <include layout="@layout/agree" />
+
+            <TextView
+                android:id="@+id/textViewCommission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonBack3"
+            style="@style/DefaultButtonStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/buttonNext3"
+            style="@style/DefaultButtonStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="Next" />
+
+    </LinearLayout>
+</LinearLayout>

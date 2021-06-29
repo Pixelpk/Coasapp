@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutVehCat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="1dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_or_black"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageViewVehicleCat"
+            android:layout_width="match_parent"
+            
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/sportscar" />
+
+        <TextView
+            android:id="@+id/textViewVehicleCat"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_or_white"
+            android:gravity="center"
+            android:text="Sedan" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,1074 @@
+<html>
+<head>
+<title>COASHomeActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #808080; font-style: italic;}
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+COASHomeActivity.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span>com.coasapp.coas.general;
+
+<span class="s0">import </span>android.Manifest;
+<span class="s0">import </span>android.app.AlertDialog;
+<span class="s0">import </span>android.content.Context;
+<span class="s0">import </span>android.content.DialogInterface;
+<span class="s0">import </span>android.content.Intent;
+<span class="s0">import </span>android.content.SharedPreferences;
+<span class="s0">import </span>android.content.pm.PackageManager;
+<span class="s0">import </span>android.database.Cursor;
+<span class="s0">import </span>android.database.sqlite.SQLiteDatabase;
+<span class="s0">import </span>android.location.Location;
+<span class="s0">import </span>android.location.LocationManager;
+<span class="s0">import </span>android.net.Uri;
+<span class="s0">import </span>android.os.AsyncTask;
+<span class="s0">import </span>android.os.Bundle;
+<span class="s0">import </span>android.os.Handler;
+<span class="s0">import </span>android.os.Looper;
+<span class="s0">import </span>android.provider.Settings;
+<span class="s0">import </span>android.support.annotation.IdRes;
+<span class="s0">import </span>android.support.annotation.NonNull;
+<span class="s0">import </span>android.support.design.widget.BottomNavigationView;
+<span class="s0">import </span>android.support.design.widget.FloatingActionButton;
+<span class="s0">import </span>android.support.design.widget.Snackbar;
+<span class="s0">import </span>android.support.v4.app.ActivityCompat;
+<span class="s0">import </span>android.support.v4.app.Fragment;
+<span class="s0">import </span>android.util.Log;
+<span class="s0">import </span>android.view.View;
+<span class="s0">import </span>android.support.design.widget.NavigationView;
+<span class="s0">import </span>android.support.v4.view.GravityCompat;
+<span class="s0">import </span>android.support.v4.widget.DrawerLayout;
+<span class="s0">import </span>android.support.v7.app.ActionBarDrawerToggle;
+<span class="s0">import </span>android.support.v7.app.AppCompatActivity;
+<span class="s0">import </span>android.support.v7.widget.Toolbar;
+<span class="s0">import </span>android.view.MenuItem;
+<span class="s0">import </span>android.widget.CompoundButton;
+<span class="s0">import </span>android.widget.ImageButton;
+<span class="s0">import </span>android.widget.Switch;
+<span class="s0">import </span>android.widget.TextView;
+<span class="s0">import </span>android.widget.Toast;
+
+<span class="s0">import </span>com.coasapp.coas.bargain.BargainDetailActivity;
+<span class="s0">import </span>com.coasapp.coas.bargain.MyVehiclesActivity;
+<span class="s0">import </span>com.mobicomkit.ApplozicClient;
+<span class="s0">import </span>com.mobicomkit.api.account.user.UserLogoutTask;
+<span class="s0">import </span>com.coasapp.coas.R;
+<span class="s0">import </span>com.coasapp.coas.bargain.BargainFragment;
+<span class="s0">import </span>com.coasapp.coas.bargain.BargainHistoryActivity;
+<span class="s0">import </span>com.coasapp.coas.bargain.ManageVehicleActivity;
+<span class="s0">import </span>com.coasapp.coas.bargain.MyBargainRequests;
+<span class="s0">import </span>com.coasapp.coas.roombook.BookingHistoryActivity;
+<span class="s0">import </span>com.coasapp.coas.roombook.MyBookingsActivity;
+<span class="s0">import </span>com.coasapp.coas.roombook.MyRoomsActivity;
+<span class="s0">import </span>com.coasapp.coas.roombook.RoomsActivity;
+<span class="s0">import </span>com.coasapp.coas.roombook.RoomsFragment;
+<span class="s0">import </span>com.coasapp.coas.shopping.AddressesActivity;
+<span class="s0">import </span>com.coasapp.coas.shopping.BuyerOrdersActivity;
+<span class="s0">import </span>com.coasapp.coas.shopping.CartActivity;
+<span class="s0">import </span>com.coasapp.coas.shopping.MyProductsActivity;
+<span class="s0">import </span>com.coasapp.coas.shopping.ProductCategoriesFragment;
+<span class="s0">import </span>com.coasapp.coas.shopping.ProductsActivity;
+<span class="s0">import </span>com.coasapp.coas.shopping.SellerOrdersActivity;
+<span class="s0">import </span>com.mobicomkit.uiwidgets.conversation.utils.DatabaseHandler;
+<span class="s0">import </span>com.coasapp.coas.utils.APICallbacks;
+<span class="s0">import </span>com.coasapp.coas.utils.APIService;
+<span class="s0">import </span>com.coasapp.coas.utils.APPHelper;
+<span class="s0">import </span>com.coasapp.coas.utils.LocationHelper;
+<span class="s0">import </span>com.coasapp.coas.utils.RequestHandler;
+<span class="s0">import </span>com.mobicomkit.uiwidgets.conversation.ConversationUIService;
+<span class="s0">import </span>com.mobicomkit.uiwidgets.conversation.activity.ConversationActivity;
+<span class="s0">import </span>com.coasapp.coas.utils.APPConstants;
+<span class="s0">import </span>com.bumptech.glide.Glide;
+<span class="s0">import </span>com.google.android.gms.common.api.GoogleApiClient;
+<span class="s0">import </span>com.google.android.gms.location.FusedLocationProviderClient;
+<span class="s0">import </span>com.google.android.gms.location.LocationCallback;
+<span class="s0">import </span>com.google.android.gms.location.LocationRequest;
+<span class="s0">import </span>com.google.android.gms.location.LocationResult;
+<span class="s0">import </span>com.google.android.gms.location.LocationServices;
+<span class="s0">import </span>com.pubnub.api.PNConfiguration;
+<span class="s0">import </span>com.pubnub.api.PubNub;
+
+<span class="s0">import </span>org.json.JSONArray;
+<span class="s0">import </span>org.json.JSONException;
+<span class="s0">import </span>org.json.JSONObject;
+
+<span class="s0">import </span>java.util.HashMap;
+<span class="s0">import </span>java.util.LinkedHashMap;
+
+<span class="s0">import </span>de.hdodenhof.circleimageview.CircleImageView;
+
+
+<span class="s0">public class </span>COASHomeActivity <span class="s0">extends </span>AppCompatActivity <span class="s0">implements </span>NavigationView.OnNavigationItemSelectedListener, APPConstants {
+
+    <span class="s0">private </span>UserLogoutTask userLogoutTask;
+    <span class="s0">private </span>FusedLocationProviderClient mFusedLocationClient;
+    String lat = <span class="s2">&quot;0&quot;</span>, lng = <span class="s2">&quot;0&quot;</span>, place = <span class="s2">&quot;&quot;</span>;
+    <span class="s0">private </span>GoogleApiClient googleApiClient;
+    BottomNavigationView bottomNavigationView;
+    TextView textViewCart;
+    ImageButton imageButtonCart;
+    <span class="s0">int </span>value = <span class="s3">0</span>;
+    <span class="s0">int </span>menuvalue = <span class="s3">0</span>;
+    DatabaseHandler databaseHandler;
+    SQLiteDatabase sqLiteDatabase;
+    TextView textViewName, textViewPhone;
+    CircleImageView imageViewProfile;
+    SharedPreferences sharedPreferences, sharedPreferencesCar;
+    NavigationView navigationView;
+    LocationRequest locationRequest;
+    <span class="s0">boolean </span>selected = <span class="s0">false</span>;
+
+    <span class="s0">public static </span>PubNub pubnub; <span class="s4">// Pubnub instance</span>
+
+    @Override
+    <span class="s0">protected void </span>onCreate(Bundle savedInstanceState) {
+        <span class="s0">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_coaswelcome);
+        APPHelper.showLog(<span class="s2">&quot;Create&quot;</span>, <span class="s2">&quot;onCreate&quot;</span>);
+        sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+        databaseHandler = <span class="s0">new </span>DatabaseHandler(<span class="s0">this</span>);
+        sqLiteDatabase = databaseHandler.getWritableDatabase();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Switch switchAct = findViewById(R.id.switchOnline);
+
+        textViewCart = findViewById(R.id.textViewCart);
+        imageButtonCart = findViewById(R.id.button_Cart);
+        <span class="s4">//mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);</span>
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setVisibility(View.GONE);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            @Override
+            <span class="s0">public void </span>onClick(View view) {
+                Snackbar.make(view, <span class="s2">&quot;Replace with your own action&quot;</span>, Snackbar.LENGTH_LONG)
+                        .setAction(<span class="s2">&quot;Action&quot;</span>, <span class="s0">null</span>).show();
+            }
+        });
+
+        findViewById(R.id.buttonRoom).setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            @Override
+            <span class="s0">public void </span>onClick(View v) {
+                startActivity(<span class="s0">new </span>Intent(getApplicationContext(), RoomsActivity.<span class="s0">class</span>));
+            }
+        });
+        findViewById(R.id.button_Cart).setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            @Override
+            <span class="s0">public void </span>onClick(View v) {
+                <span class="s4">/*Intent intent = new Intent(getApplicationContext(), CartActivity.class); 
+<a name="l2"><span class="ln">2    </span></a>                startActivity(intent);*/</span>
+                <span class="s0">new </span>GetAddress().execute();
+            }
+        });
+
+        <span class="s0">final </span>DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = <span class="s0">new </span>ActionBarDrawerToggle(
+                <span class="s0">this</span>, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        drawer.addDrawerListener(<span class="s0">new </span>DrawerLayout.DrawerListener() {
+            @Override
+            <span class="s0">public void </span>onDrawerSlide(@NonNull View drawerView, <span class="s0">float </span>slideOffset) {
+                APPHelper.showLog(<span class="s2">&quot;Code&quot;</span>, <span class="s2">&quot;Slide&quot; </span>+ value);
+            }
+
+            @Override
+            <span class="s0">public void </span>onDrawerOpened(@NonNull View drawerView) {
+                APPHelper.showLog(<span class="s2">&quot;Code&quot;</span>, <span class="s2">&quot;Open&quot; </span>+ value);
+                selected = <span class="s0">false</span>;
+
+            }
+
+            @Override
+            <span class="s0">public void </span>onDrawerClosed(@NonNull View drawerView) {
+                APPHelper.showLog(<span class="s2">&quot;Select&quot;</span>, String.valueOf(selected));
+                <span class="s0">if </span>(!selected) {
+                    <span class="s0">if </span>(bottomNavigationView.getMenu().findItem(R.id.navigation_messsenger).isChecked()) {
+                        bottomNavigationView.setSelectedItemId(R.id.navigation_messsenger);
+                    }
+                } <span class="s4">/*else { 
+<a name="l3"><span class="ln">3    </span></a>                    if (bottomNavigationView.getMenu().findItem(R.id.navigation_messsenger).isChecked()) { 
+<a name="l4"><span class="ln">4    </span></a>                        bottomNavigationView.setSelectedItemId(R.id.navigation_messsenger); 
+<a name="l5"><span class="ln">5    </span></a>                    } 
+<a name="l6"><span class="ln">6    </span></a>                }*/</span>
+
+            }
+
+            @Override
+            <span class="s0">public void </span>onDrawerStateChanged(<span class="s0">int </span>newState) {
+
+            }
+        });
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(<span class="s0">this</span>);
+        View viewNav = navigationView.getHeaderView(<span class="s3">0</span>);
+        viewNav.setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            @Override
+            <span class="s0">public void </span>onClick(View v) {
+                drawer.closeDrawers();
+                <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                    @Override
+                    <span class="s0">public void </span>run() {
+                        selected = <span class="s0">true</span>;
+                        value = <span class="s3">6</span>;
+                        menuvalue = <span class="s3">6</span>;
+                        <span class="s0">if </span>(bottomNavigationView.getMenu().findItem(R.id.navigation_messsenger).isChecked()) {
+                            menuvalue = <span class="s3">1</span>;
+                        }
+                        Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), MyAccountActivity.<span class="s0">class</span>);
+                        startActivityForResult(intent, <span class="s3">1</span>);
+                    }
+                }, <span class="s3">220</span>);
+            }
+        });
+        textViewName = viewNav.findViewById(R.id.textViewName);
+        textViewPhone = viewNav.findViewById(R.id.textViewPhone);
+        imageViewProfile = viewNav.findViewById(R.id.imageViewProfile);
+        disableShiftMode();
+        APICallbacks apiCallbacks = <span class="s0">new </span>APICallbacks() {
+            @Override
+            <span class="s0">public void </span>taskStart() {
+
+            }
+
+            @Override
+            <span class="s0">public void </span>taskEnd(String type, String response) {
+                JSONObject object = <span class="s0">null</span>;
+                <span class="s0">try </span>{
+                    object = <span class="s0">new </span>JSONObject(response);
+                    <span class="s0">if </span>(type.equalsIgnoreCase(<span class="s2">&quot;driver&quot;</span>)) {
+                        <span class="s0">if </span>(object.getString(<span class="s2">&quot;response_code&quot;</span>).equalsIgnoreCase(<span class="s2">&quot;1&quot;</span>)) {
+                            <span class="s0">if </span>(object.getString(<span class="s2">&quot;is_driver&quot;</span>).equalsIgnoreCase(<span class="s2">&quot;1&quot;</span>)) {
+                                switchAct.setVisibility(View.VISIBLE);
+                                <span class="s0">if </span>(object.getString(<span class="s2">&quot;driver_online&quot;</span>).equalsIgnoreCase(<span class="s2">&quot;1&quot;</span>)) {
+                                    switchAct.setChecked(<span class="s0">true</span>);
+                                } <span class="s0">else </span>{
+                                    switchAct.setChecked(<span class="s0">false</span>);
+                                }
+                            }
+                        }
+                    }
+                } <span class="s0">catch </span>(JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        APIService apiService = <span class="s0">new </span>APIService(apiCallbacks, getApplicationContext());
+        switchAct.setOnCheckedChangeListener(<span class="s0">new </span>CompoundButton.OnCheckedChangeListener() {
+            @Override
+            <span class="s0">public void </span>onCheckedChanged(CompoundButton buttonView, <span class="s0">boolean </span>isChecked) {
+                String status = <span class="s2">&quot;&quot;</span>;
+                <span class="s0">if </span>(buttonView.isPressed()) {
+                    <span class="s0">if </span>(isChecked) {
+                        status = <span class="s2">&quot;1&quot;</span>;
+                        <span class="s0">if </span>(ActivityCompat.checkSelfPermission(COASHomeActivity.<span class="s0">this</span>, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &amp;&amp; ActivityCompat.checkSelfPermission(COASHomeActivity.<span class="s0">this</span>, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            <span class="s4">// TODO: Consider calling</span>
+                            switchAct.setChecked(<span class="s0">false</span>);
+                            status=<span class="s2">&quot;0&quot;</span>;
+                            <span class="s4">//    ActivityCompat#requestPermissions</span>
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for ActivityCompat#requestPermissions for more details.
+                            AlertDialog.Builder alertDialogBuilder = <span class="s0">new </span>AlertDialog.Builder(COASHomeActivity.<span class="s0">this</span>);
+                            alertDialogBuilder.setMessage(<span class="s2">&quot;Allow Location Permission&quot;</span>);
+
+                            alertDialogBuilder.setPositiveButton(<span class="s2">&quot;OK&quot;</span>,
+                                    <span class="s0">new </span>DialogInterface.OnClickListener() {
+                                        @Override
+                                        <span class="s0">public void </span>onClick(DialogInterface arg0, <span class="s0">int </span>arg1) {
+                                            Intent intent = <span class="s0">new </span>Intent();
+                                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                            Uri uri = Uri.fromParts(<span class="s2">&quot;package&quot;</span>, getPackageName(), <span class="s0">null</span>);
+                                            intent.setData(uri);
+                                            startActivity(intent);
+                                        }
+                                    });
+
+
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.setCanceledOnTouchOutside(<span class="s0">false</span>);
+                            alertDialog.show();
+                        }
+                        <span class="s0">else if</span>(!LocationHelper.checkGPS(getApplicationContext())){
+                            switchAct.setChecked(<span class="s0">false</span>);
+                            status=<span class="s2">&quot;0&quot;</span>;
+                            AlertDialog.Builder alertDialogBuilder = <span class="s0">new </span>AlertDialog.Builder(COASHomeActivity.<span class="s0">this</span>);
+                            alertDialogBuilder.setMessage(<span class="s2">&quot;Turn on GPS&quot;</span>);
+
+                            alertDialogBuilder.setPositiveButton(<span class="s2">&quot;OK&quot;</span>,
+                                    <span class="s0">new </span>DialogInterface.OnClickListener() {
+                                        @Override
+                                        <span class="s0">public void </span>onClick(DialogInterface arg0, <span class="s0">int </span>arg1) {
+                                            Intent myIntent = <span class="s0">new </span>Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                            startActivityForResult(myIntent, <span class="s3">500</span>);
+                                        }
+                                    });
+
+
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.setCanceledOnTouchOutside(<span class="s0">false</span>);
+                            alertDialog.show();
+                        }
+                    } <span class="s0">else </span>{
+                        status = <span class="s2">&quot;0&quot;</span>;
+                    }
+                    HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+                    map.put(<span class="s2">&quot;status&quot;</span>, status);
+                    map.put(<span class="s2">&quot;user_id&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;userId&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+                    apiService.callAPI(map, APPConstants.MAIN_URL + <span class="s2">&quot;update_driver_status.php&quot;</span>, <span class="s2">&quot;driver_status&quot;</span>);
+                }
+            }
+        });
+        bottomNavigationView.setOnNavigationItemSelectedListener(<span class="s0">new </span>BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            <span class="s0">public boolean </span>onNavigationItemSelected(@NonNull MenuItem item) {
+                switchAct.setVisibility(View.GONE);
+                APPHelper.showLog(<span class="s2">&quot;Bnv&quot;</span>, <span class="s2">&quot;1&quot;</span>);
+
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content);
+                <span class="s0">switch </span>(item.getItemId()) {
+                    <span class="s0">case </span>R.id.navigation_messsenger:
+                        getSupportActionBar().setTitle(<span class="s2">&quot;Messenger&quot;</span>);
+
+                        menuvalue = <span class="s3">1</span>;
+                        value = <span class="s3">1</span>;
+                        textViewCart.setVisibility(View.GONE);
+                        imageButtonCart.setVisibility(View.GONE);
+                        getSupportActionBar().setTitle(<span class="s2">&quot;Messenger&quot;</span>);
+                        Intent intent = <span class="s0">new </span>Intent(COASHomeActivity.<span class="s0">this</span>, ConversationActivity.<span class="s0">class</span>);
+                        <span class="s0">if </span>(ApplozicClient.getInstance(getApplicationContext()).isContextBasedChat()) {
+                            intent.putExtra(ConversationUIService.CONTEXT_BASED_CHAT, <span class="s0">true</span>);
+                        }
+                        startActivityForResult(intent, <span class="s3">1</span>);
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span>R.id.navigation_renting:
+                        getSupportActionBar().setTitle(<span class="s2">&quot;Rooms for Rent&quot;</span>);
+
+                        <span class="s0">if </span>(!(currentFragment <span class="s0">instanceof </span>RoomsFragment)) {
+                            menuvalue = <span class="s3">2</span>;
+                            value = <span class="s3">2</span>;
+                            textViewCart.setVisibility(View.GONE);
+                            imageButtonCart.setVisibility(View.GONE);
+                            getSupportActionBar().setTitle(<span class="s2">&quot;Rooms for Rent&quot;</span>);
+
+                            getSupportFragmentManager().beginTransaction().replace(R.id.content, <span class="s0">new </span>RoomsFragment()).commit();
+                            <span class="s4">//startActivity(new Intent(getApplicationContext(), RoomsActivity.class));</span>
+                        }
+
+                        <span class="s0">break</span>;
+
+                    <span class="s0">case </span>R.id.navigation_shopping:
+                        getSupportActionBar().setTitle(<span class="s2">&quot;Shopping Center&quot;</span>);
+
+                        <span class="s0">if </span>(!(currentFragment <span class="s0">instanceof </span>ProductCategoriesFragment)) {
+                            menuvalue = <span class="s3">3</span>;
+                            value = <span class="s3">3</span>;
+                            textViewCart.setVisibility(View.VISIBLE);
+                            imageButtonCart.setVisibility(View.VISIBLE);
+                            getSupportActionBar().setTitle(<span class="s2">&quot;Shopping Center&quot;</span>);
+                            Fragment fragment = <span class="s0">new </span>ProductCategoriesFragment();
+                            Bundle bundle = <span class="s0">new </span>Bundle();
+                            bundle.putString(<span class="s2">&quot;cat_id&quot;</span>, <span class="s2">&quot;0&quot;</span>);
+                            bundle.putString(<span class="s2">&quot;sub_cat_id&quot;</span>, <span class="s2">&quot;0&quot;</span>);
+                            bundle.putString(<span class="s2">&quot;cat_name&quot;</span>, <span class="s2">&quot;&quot;</span>);
+                            fragment.setArguments(bundle);
+                            getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+                        }
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span>R.id.navigation_bargain:
+
+
+                        HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+                        map.put(<span class="s2">&quot;coas_id&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;coasId&quot;</span>, <span class="s2">&quot;&quot;</span>));
+
+                        apiService.callAPI(map, APPConstants.MAIN_URL + <span class="s2">&quot;check_user_active.php&quot;</span>, <span class="s2">&quot;driver&quot;</span>);
+
+
+                        getSupportActionBar().setTitle(<span class="s2">&quot;Bargain to Driver&quot;</span>);
+
+                        <span class="s4">//value = 0;</span>
+                        textViewCart.setVisibility(View.GONE);
+                        imageButtonCart.setVisibility(View.GONE);
+                       <span class="s4">/* intent = new Intent(getApplicationContext(), VehicleMapsActivity.class); 
+<a name="l7"><span class="ln">7    </span></a>                        intent.putExtra(&quot;action&quot;, menuvalue); 
+<a name="l8"><span class="ln">8    </span></a>                        startActivityForResult(intent, 1);*/</span>
+                        Fragment fragment = <span class="s0">new </span>BargainFragment();
+                        Bundle bundle = <span class="s0">new </span>Bundle();
+                        bundle.putString(<span class="s2">&quot;cat_id&quot;</span>, <span class="s2">&quot;0&quot;</span>);
+                        fragment.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+
+                        <span class="s0">break</span>;
+                }
+                <span class="s0">return true</span>;
+            }
+        });
+
+        <span class="s0">if </span>(sharedPreferences.getString(<span class="s2">&quot;isDriver&quot;</span>, <span class="s2">&quot;0&quot;</span>).equalsIgnoreCase(<span class="s2">&quot;0&quot;</span>)) {
+            navigationView.getMenu().findItem(R.id.nav_manage_vehicles).setTitle(<span class="s2">&quot;BECOME A DRIVER&quot;</span>);
+            navigationView.getMenu().findItem(R.id.nav_my_bargains).setVisible(<span class="s0">false</span>);
+        }
+
+        <span class="s0">if </span>(sharedPreferences.getString(<span class="s2">&quot;isSeller&quot;</span>, <span class="s2">&quot;0&quot;</span>).equalsIgnoreCase(<span class="s2">&quot;0&quot;</span>)) {
+            navigationView.getMenu().findItem(R.id.nav_seller_orders).setVisible(<span class="s0">false</span>);
+        }
+        <span class="s0">if </span>(sharedPreferences.getString(<span class="s2">&quot;isHoster&quot;</span>, <span class="s2">&quot;0&quot;</span>).equalsIgnoreCase(<span class="s2">&quot;0&quot;</span>)) {
+            navigationView.getMenu().findItem(R.id.nav_manage_bookings).setVisible(<span class="s0">false</span>);
+        }
+       <span class="s4">/* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab); 
+<a name="l9"><span class="ln">9    </span></a>        fab.setOnClickListener(new View.OnClickListener() { 
+<a name="l10"><span class="ln">10   </span></a>            @Override 
+<a name="l11"><span class="ln">11   </span></a>            public void onItemSelected(View view) { 
+<a name="l12"><span class="ln">12   </span></a>                Snackbar.make(view, &quot;Replace with your own action&quot;, Snackbar.LENGTH_LONG) 
+<a name="l13"><span class="ln">13   </span></a>                        .setAction(&quot;Action&quot;, null).show(); 
+<a name="l14"><span class="ln">14   </span></a>            } 
+<a name="l15"><span class="ln">15   </span></a>        }); 
+<a name="l16"><span class="ln">16   </span></a> 
+<a name="l17"><span class="ln">17   </span></a> 
+<a name="l18"><span class="ln">18   </span></a>*/</span>
+        sharedPreferencesCar = getSharedPreferences(CAR_DETAILS, Context.MODE_PRIVATE);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(<span class="s0">this</span>);
+
+
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(<span class="s3">10000</span>); <span class="s4">// 5 second delay between each request</span>
+        locationRequest.setFastestInterval(<span class="s3">5000</span>); <span class="s4">// 5 seconds fastest time in between each request</span>
+        locationRequest.setSmallestDisplacement(<span class="s3">0</span>); <span class="s4">// 10 meters minimum displacement for new location request</span>
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+
+        <span class="s0">if </span>(ActivityCompat.checkSelfPermission(<span class="s0">this</span>, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &amp;&amp; ActivityCompat.checkSelfPermission(<span class="s0">this</span>, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            <span class="s4">// TODO: Consider calling</span>
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(<span class="s0">this</span>, <span class="s0">new </span>String[]{Manifest.permission.ACCESS_FINE_LOCATION}, <span class="s3">99</span>);
+        }
+       <span class="s4">/* mFusedLocationClient.getLastLocation() 
+<a name="l19"><span class="ln">19   </span></a>                .addOnSuccessListener(COASHomeActivity.this, new OnSuccessListener&lt;Location&gt;() { 
+<a name="l20"><span class="ln">20   </span></a>                    @Override 
+<a name="l21"><span class="ln">21   </span></a>                    public void onSuccess(Location location) { 
+<a name="l22"><span class="ln">22   </span></a>                        // Got last known location. In some rare situations this can be null. 
+<a name="l23"><span class="ln">23   </span></a>                        if (location != null) { 
+<a name="l24"><span class="ln">24   </span></a>                            // Logic to handle location object 
+<a name="l25"><span class="ln">25   </span></a>                            lat = String.valueOf(location.getLatitude()); 
+<a name="l26"><span class="ln">26   </span></a>                            lng = String.valueOf(location.getLongitude()); 
+<a name="l27"><span class="ln">27   </span></a>                            SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE); 
+<a name="l28"><span class="ln">28   </span></a>                            SharedPreferences.Editor editor = sharedPreferences.edit(); 
+<a name="l29"><span class="ln">29   </span></a>                            editor.putString(&quot;lat&quot;, lat); 
+<a name="l30"><span class="ln">30   </span></a>                            editor.putString(&quot;lng&quot;, lng); 
+<a name="l31"><span class="ln">31   </span></a>                            editor.apply(); 
+<a name="l32"><span class="ln">32   </span></a>                            String msg = &quot;Updated Location: &quot; + 
+<a name="l33"><span class="ln">33   </span></a>                                    Double.toString(location.getLatitude()) + &quot;,&quot; + 
+<a name="l34"><span class="ln">34   </span></a>                                    Double.toString(location.getLongitude()); 
+<a name="l35"><span class="ln">35   </span></a>                            //Toast.makeText(this, msg, Toast.LENGTH_SHORT).show(); 
+<a name="l36"><span class="ln">36   </span></a>                            APPHelper.showLog(&quot;Location&quot;, msg); 
+<a name="l37"><span class="ln">37   </span></a>                            List&lt;Address&gt; addresses = null; 
+<a name="l38"><span class="ln">38   </span></a> 
+<a name="l39"><span class="ln">39   </span></a> 
+<a name="l40"><span class="ln">40   </span></a>                        } else { 
+<a name="l41"><span class="ln">41   </span></a>                            APPHelper.showLog(&quot;Location&quot;, &quot;Not found&quot;); 
+<a name="l42"><span class="ln">42   </span></a>                        } 
+<a name="l43"><span class="ln">43   </span></a>                    } 
+<a name="l44"><span class="ln">44   </span></a>                }); 
+<a name="l45"><span class="ln">45   </span></a>*/</span>
+        <span class="s0">else </span>{
+            sendUpdatedLocationMessage();
+
+        }
+
+    }
+
+
+
+    @Override
+    <span class="s0">protected void </span>onActivityResult(<span class="s0">int </span>requestCode, <span class="s0">int </span>resultCode, Intent data) {
+        <span class="s0">super</span>.onActivityResult(requestCode, resultCode, data);
+        <span class="s0">if </span>(requestCode == <span class="s3">500</span>) {
+            sendUpdatedLocationMessage();
+        }
+        <span class="s0">if </span>(resultCode == RESULT_OK) {
+
+            <span class="s0">if </span>(requestCode == <span class="s3">1</span>) {
+                Log.d(<span class="s2">&quot;Code&quot;</span>, String.valueOf(data.getIntExtra(<span class="s2">&quot;action&quot;</span>, <span class="s3">0</span>)));
+                value = data.getIntExtra(<span class="s2">&quot;action&quot;</span>, <span class="s3">1</span>);
+                <span class="s0">switch </span>(value) {
+                    <span class="s0">case </span><span class="s3">5</span>:
+                        finish();
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span><span class="s3">1</span>:
+                        bottomNavigationView.setSelectedItemId(R.id.navigation_messsenger);
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span><span class="s3">2</span>:
+
+                        bottomNavigationView.setSelectedItemId(R.id.navigation_renting);
+                        <span class="s4">//addSecondView();</span>
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span><span class="s3">3</span>:
+                        bottomNavigationView.setSelectedItemId(R.id.navigation_shopping);
+                        <span class="s4">//addThirdView();</span>
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span><span class="s3">0</span>:
+                        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                        <span class="s4">//addSecondView();</span>
+                        //bottomNavigationView.setSelectedItemId(R.id.navigation_renting);
+                        drawer.openDrawer(GravityCompat.START);
+                        <span class="s0">break</span>;
+                    <span class="s0">case </span><span class="s3">4</span>:
+                        menuvalue = <span class="s3">1</span>;
+                        bottomNavigationView.setSelectedItemId(R.id.navigation_bargain);
+                        <span class="s0">break</span>;
+
+                }
+            }
+        }
+    }
+
+    @Override
+    <span class="s0">public boolean </span>onNavigationItemSelected(MenuItem item) {
+        selected = <span class="s0">true</span>;
+        <span class="s4">// Handle navigation view item clicks here.</span>
+        value = <span class="s3">6</span>;
+        menuvalue = <span class="s3">6</span>;
+        <span class="s0">if </span>(bottomNavigationView.getMenu().findItem(R.id.navigation_messsenger).isChecked()) {
+            menuvalue = <span class="s3">1</span>;
+        }
+        APPHelper.showLog(<span class="s2">&quot;Code&quot;</span>, <span class="s2">&quot;Nav&quot; </span>+ value);
+
+        <span class="s0">int </span>id = item.getItemId();
+        <span class="s0">if </span>(id == R.id.nav_logout) {
+            findViewById(R.id.layoutProgress).setVisibility(View.VISIBLE);
+            UserLogoutTask.TaskListener userLogoutTaskListener = <span class="s0">new </span>UserLogoutTask.TaskListener() {
+
+                @Override
+                <span class="s0">public void </span>onSuccess(Context context) {
+                    userLogoutTask = <span class="s0">null</span>;
+                    findViewById(R.id.layoutProgress).setVisibility(View.GONE);
+                    SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(<span class="s2">&quot;loggedIn&quot;</span>, <span class="s0">false</span>);
+                    editor.apply();
+                    SharedPreferences sharedPreferencesCar = getSharedPreferences(CAR_DETAILS, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = sharedPreferencesCar.edit();
+                    editor1.clear();
+                    Toast.makeText(getBaseContext(), getBaseContext().getString(R.string.log_out_successful), Toast.LENGTH_SHORT).show();
+                    Intent intent = <span class="s0">new </span>Intent(context, COASLoginActivity.<span class="s0">class</span>);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+
+                @Override
+                <span class="s0">public void </span>onFailure(Exception exception) {
+                    findViewById(R.id.layoutProgress).setVisibility(View.GONE);
+                    userLogoutTask = <span class="s0">null</span>;
+
+                    AlertDialog alertDialog = <span class="s0">new </span>AlertDialog.Builder(COASHomeActivity.<span class="s0">this</span>).create();
+                    alertDialog.setTitle(getString(R.string.text_alert));
+                    alertDialog.setMessage(exception.getMessage());
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok_alert),
+                            <span class="s0">new </span>DialogInterface.OnClickListener() {
+                                <span class="s0">public void </span>onClick(DialogInterface dialog, <span class="s0">int </span>which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    <span class="s0">if </span>(!isFinishing()) {
+                        alertDialog.show();
+                    }
+                }
+            };
+
+            userLogoutTask = <span class="s0">new </span>UserLogoutTask(userLogoutTaskListener, <span class="s0">this</span>);
+            userLogoutTask.execute((Void) <span class="s0">null</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_manage_bookings) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), MyBookingsActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_my_bargains) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), MyBargainRequests.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_change_password) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), ChangePasswordActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_booking_history) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), BookingHistoryActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_manage_rooms) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), MyRoomsActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_payout) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), PayoutHomeActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_order_history) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), BuyerOrdersActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_manage_products) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), MyProductsActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_address) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), AddressesActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_support) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), TicketListActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_seller_orders) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), SellerOrdersActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_notifications) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), NotificationsActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_manage_vehicles) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), MyVehiclesActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        } <span class="s0">else if </span>(id == R.id.nav_my_trips) {
+            <span class="s0">new </span>Handler().postDelayed(<span class="s0">new </span>Runnable() {
+                @Override
+                <span class="s0">public void </span>run() {
+                    Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), BargainHistoryActivity.<span class="s0">class</span>);
+                    intent.putExtra(<span class="s2">&quot;action&quot;</span>, menuvalue);
+                    startActivityForResult(intent, <span class="s3">1</span>);
+                }
+            }, <span class="s3">220</span>);
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        <span class="s0">return true</span>;
+    }
+
+    @Override
+    <span class="s0">protected void </span>onDestroy() {
+        <span class="s0">super</span>.onDestroy();
+    }
+
+    <span class="s0">private void </span>initPubnub() {
+        PNConfiguration pnConfiguration = <span class="s0">new </span>PNConfiguration();
+        pnConfiguration.setSubscribeKey(PUBNUB_SUBSCRIBE_KEY);
+        pnConfiguration.setPublishKey(PUBNUB_PUBLISH_KEY);
+        pnConfiguration.setSecure(<span class="s0">true</span>);
+        pubnub = <span class="s0">new </span>PubNub(pnConfiguration);
+    }
+
+    @Override
+    <span class="s0">protected void </span>onResume() {
+        <span class="s0">super</span>.onResume();
+        <span class="s0">int </span>unread = sharedPreferences.getInt(<span class="s2">&quot;unread&quot;</span>, <span class="s3">0</span>);
+        textViewName.setText(sharedPreferences.getString(<span class="s2">&quot;firstName&quot;</span>, <span class="s2">&quot;&quot;</span>) + <span class="s2">&quot; &quot; </span>+ sharedPreferences.getString(<span class="s2">&quot;lastName&quot;</span>, <span class="s2">&quot;&quot;</span>));
+        textViewPhone.setText(sharedPreferences.getString(<span class="s2">&quot;phone&quot;</span>, <span class="s2">&quot;000000000&quot;</span>));
+        Glide.with(getApplicationContext()).load(MAIN_URL_IMAGE + sharedPreferences.getString(<span class="s2">&quot;image&quot;</span>, <span class="s2">&quot;&quot;</span>)).into(imageViewProfile);
+        String sql = <span class="s2">&quot;select * from cart&quot;</span>;
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, <span class="s0">null</span>);
+        <span class="s4">//textViewCart.setText(&quot;&quot; + cursor.getCount());</span>
+        cursor.close();
+        <span class="s0">new </span>GetCart().execute();
+        setMenuCounter(R.id.nav_notifications, unread);
+
+    }
+
+    <span class="s0">class </span>GetCart <span class="s0">extends </span>AsyncTask&lt;String, Void, String&gt; {
+
+        @Override
+        <span class="s0">protected void </span>onPreExecute() {
+            <span class="s0">super</span>.onPreExecute();
+        }
+
+        @Override
+        <span class="s0">protected </span>String doInBackground(String... strings) {
+            HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+            map.put(<span class="s2">&quot;user_id&quot;</span>, getSharedPreferences(APP_PREF, <span class="s3">0</span>).getString(<span class="s2">&quot;userId&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+            <span class="s0">return new </span>RequestHandler().sendPostRequest(MAIN_URL + <span class="s2">&quot;view_cart.php&quot;</span>, map);
+        }
+
+        @Override
+        <span class="s0">protected void </span>onPostExecute(String s) {
+            <span class="s0">super</span>.onPostExecute(s);
+            <span class="s0">try </span>{
+                JSONObject object = <span class="s0">new </span>JSONObject(s);
+                JSONArray array = object.getJSONArray(<span class="s2">&quot;products&quot;</span>);
+
+                textViewCart.setText(<span class="s2">&quot;&quot; </span>+ array.length());
+            } <span class="s0">catch </span>(JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    <span class="s0">void </span>disableShiftMode() {
+       <span class="s4">/* BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0); 
+<a name="l46"><span class="ln">46   </span></a>        try { 
+<a name="l47"><span class="ln">47   </span></a>            Field shiftingMode = menuView.getClass().getDeclaredField(&quot;mShiftingMode&quot;); 
+<a name="l48"><span class="ln">48   </span></a>            shiftingMode.setAccessible(true); 
+<a name="l49"><span class="ln">49   </span></a>            shiftingMode.setBoolean(menuView, false); 
+<a name="l50"><span class="ln">50   </span></a>            shiftingMode.setAccessible(false); 
+<a name="l51"><span class="ln">51   </span></a>            for (int i = 0; i &lt; menuView.getChildCount(); i++) { 
+<a name="l52"><span class="ln">52   </span></a>                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i); 
+<a name="l53"><span class="ln">53   </span></a>                //item.setShiftingMode(false); 
+<a name="l54"><span class="ln">54   </span></a>                // set once again checked value, so view will be updated 
+<a name="l55"><span class="ln">55   </span></a>                item.setChecked(item.getItemData().isChecked()); 
+<a name="l56"><span class="ln">56   </span></a>            } 
+<a name="l57"><span class="ln">57   </span></a>        } catch (NoSuchFieldException e) { 
+<a name="l58"><span class="ln">58   </span></a>            Log.e(&quot;BNVHelper&quot;, &quot;Unable to get shift mode field&quot;, e); 
+<a name="l59"><span class="ln">59   </span></a>        } catch (IllegalAccessException e) { 
+<a name="l60"><span class="ln">60   </span></a>            Log.e(&quot;BNVHelper&quot;, &quot;Unable to change value of shift mode&quot;, e); 
+<a name="l61"><span class="ln">61   </span></a>        }*/</span>
+    }
+
+    @Override
+    <span class="s0">protected void </span>onRestart() {
+        <span class="s0">super</span>.onRestart();
+        <span class="s4">/*if(menuvalue == 0){ 
+<a name="l62"><span class="ln">62   </span></a>            Intent intent = new Intent(COASHomeActivity.this, ConversationActivity.class); 
+<a name="l63"><span class="ln">63   </span></a>            if (ApplozicClient.getInstance(getApplicationContext()).isContextBasedChat()) { 
+<a name="l64"><span class="ln">64   </span></a>                intent.putExtra(ConversationUIService.CONTEXT_BASED_CHAT, true); 
+<a name="l65"><span class="ln">65   </span></a>            } 
+<a name="l66"><span class="ln">66   </span></a>            startActivityForResult(intent, 1); 
+<a name="l67"><span class="ln">67   </span></a>        }*/</span>
+    }
+
+    <span class="s0">private void </span>setMenuCounter(@IdRes <span class="s0">int </span>itemId, <span class="s0">int </span>count) {
+        TextView view = (TextView) navigationView.getMenu().findItem(itemId).getActionView();
+        view.setText(count &gt; <span class="s3">0 </span>? String.valueOf(count) : <span class="s0">null</span>);
+    }
+
+    <span class="s0">public void </span>launchAddProductsActivity(String categoryId, String subCategoryId, String catName, String search) {
+        getSupportFragmentManager().popBackStackImmediate();
+        Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), ProductsActivity.<span class="s0">class</span>);
+        intent.putExtra(<span class="s2">&quot;cat_id&quot;</span>, categoryId);
+        intent.putExtra(<span class="s2">&quot;sub_cat_id&quot;</span>, subCategoryId);
+        intent.putExtra(<span class="s2">&quot;cat&quot;</span>, catName);
+        intent.putExtra(<span class="s2">&quot;search&quot;</span>, search);
+
+        startActivityForResult(intent, <span class="s3">99</span>);
+    }
+
+    @Override
+    <span class="s0">public void </span>onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        <span class="s0">if </span>(drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } <span class="s4">/*else if (fragment instanceof RoomsFragment) { 
+<a name="l68"><span class="ln">68   </span></a>            ((RoomsFragment) fragment).resetFilter(); 
+<a name="l69"><span class="ln">69   </span></a>        }*/ </span><span class="s0">else </span>{
+            <span class="s0">super</span>.onBackPressed();
+        }
+
+    }
+
+  <span class="s4">/*  @Override 
+<a name="l70"><span class="ln">70   </span></a>    public boolean onCreateOptionsMenu(Menu menu) { 
+<a name="l71"><span class="ln">71   </span></a>        // Inflate the menu; this adds items to the action bar if it is present. 
+<a name="l72"><span class="ln">72   </span></a>        getMenuInflater().inflate(R.menu.coaswelcome, menu); 
+<a name="l73"><span class="ln">73   </span></a>        return true; 
+<a name="l74"><span class="ln">74   </span></a>    }*/</span>
+
+    @Override
+    <span class="s0">public boolean </span>onOptionsItemSelected(MenuItem item) {
+        <span class="s4">// Handle action bar item clicks here. The action bar will</span>
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        <span class="s0">int </span>id = item.getItemId();
+
+        <span class="s4">//noinspection SimplifiableIfStatement</span>
+
+        <span class="s0">return super</span>.onOptionsItemSelected(item);
+    }
+
+
+    <span class="s0">class </span>GetAddress <span class="s0">extends </span>AsyncTask&lt;Void, Void, String&gt; {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+
+        @Override
+        <span class="s0">protected void </span>onPreExecute() {
+            <span class="s0">super</span>.onPreExecute();
+
+        }
+
+        @Override
+        <span class="s0">protected </span>String doInBackground(Void... voids) {
+            <span class="s0">return new </span>RequestHandler().sendGetRequest(MAIN_URL + <span class="s2">&quot;get_addresses.php?user_id=&quot; </span>+ sharedPreferences.getString(<span class="s2">&quot;userId&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+        }
+
+        @Override
+        <span class="s0">protected void </span>onPostExecute(String s) {
+            <span class="s0">super</span>.onPostExecute(s);
+            <span class="s0">try </span>{
+                JSONArray jsonArray = <span class="s0">new </span>JSONArray(s);
+                <span class="s4">/*if (jsonArray.length() == 0) { 
+<a name="l75"><span class="ln">75   </span></a>                    startActivity(new Intent(getApplicationContext(), AddressesActivity.class)); 
+<a name="l76"><span class="ln">76   </span></a>                } else { 
+<a name="l77"><span class="ln">77   </span></a>                    SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE); 
+<a name="l78"><span class="ln">78   </span></a>                    SharedPreferences.Editor editor = sharedPreferences.edit(); 
+<a name="l79"><span class="ln">79   </span></a>                    editor.putString(&quot;address&quot;, s); 
+<a name="l80"><span class="ln">80   </span></a>                    editor.apply(); 
+<a name="l81"><span class="ln">81   </span></a>                    Intent intent = new Intent(getApplicationContext(), CartActivity.class); 
+<a name="l82"><span class="ln">82   </span></a>                    startActivity(intent); 
+<a name="l83"><span class="ln">83   </span></a>                }*/</span>
+                SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(<span class="s2">&quot;address&quot;</span>, s);
+                editor.apply();
+                Intent intent = <span class="s0">new </span>Intent(getApplicationContext(), CartActivity.<span class="s0">class</span>);
+                startActivity(intent);
+            } <span class="s0">catch </span>(JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    <span class="s0">private void </span>sendUpdatedLocationMessage() {
+        <span class="s0">final </span>SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+
+        <span class="s0">if </span>(!LocationHelper.checkGPS(getApplicationContext())) {
+
+            AlertDialog.Builder dialog = <span class="s0">new </span>AlertDialog.Builder(<span class="s0">this</span>);
+            dialog.setMessage(<span class="s2">&quot;Please Enable Location to update your location to get the best out of this app&quot;</span>);
+            dialog.setPositiveButton(<span class="s2">&quot;Open Location Settings&quot;</span>, <span class="s0">new </span>DialogInterface.OnClickListener() {
+                @Override
+                <span class="s0">public void </span>onClick(DialogInterface paramDialogInterface, <span class="s0">int </span>paramInt) {
+                    <span class="s4">// TODO Auto-generated method stub</span>
+                    Intent myIntent = <span class="s0">new </span>Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(myIntent, <span class="s3">500</span>);
+                    <span class="s4">//new GetCountries().execute();</span>
+
+                    //get gps
+                }
+            });
+            dialog.setNegativeButton(<span class="s2">&quot;Cancel&quot;</span>, <span class="s0">new </span>DialogInterface.OnClickListener() {
+
+                @Override
+                <span class="s0">public void </span>onClick(DialogInterface paramDialogInterface, <span class="s0">int </span>paramInt) {
+                    <span class="s4">// TODO Auto-generated method stub</span>
+                    <span class="s0">new </span>GetCountries().execute();
+
+                }
+            });
+            dialog.show();
+
+        } <span class="s0">else </span>{
+            APPHelper.showLog(<span class="s2">&quot;Location&quot;</span>, <span class="s2">&quot;Start&quot;</span>);
+            <span class="s0">new </span>GetCountries().execute();
+
+            <span class="s0">try </span>{
+                mFusedLocationClient.requestLocationUpdates(locationRequest, <span class="s0">new </span>LocationCallback() {
+                    @Override
+                    <span class="s0">public void </span>onLocationResult(LocationResult locationResult) {
+
+                        Location location = locationResult.getLastLocation();
+                        lat = String.valueOf(location.getLatitude());
+                        lng = String.valueOf(location.getLongitude());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(<span class="s2">&quot;lat&quot;</span>, lat);
+                        editor.putString(<span class="s2">&quot;lng&quot;</span>, lng);
+
+                        editor.apply();
+
+                        String msg = <span class="s2">&quot;Updated Location: &quot; </span>+
+                                lat + <span class="s2">&quot;,&quot; </span>+
+                                lng;
+                        APPHelper.showLog(<span class="s2">&quot;Location&quot;</span>, msg);
+                        <span class="s4">//Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();</span>
+                        <span class="s0">new </span>UpdateLoc().execute();
+                        <span class="s4">//LinkedHashMap&lt;String, String&gt; message = getNewLocationMessage(location.getLatitude(), location.getLongitude());</span>
+                        /*COASHomeActivity.pubnub.publish() 
+<a name="l84"><span class="ln">84   </span></a>                                .message(message) 
+<a name="l85"><span class="ln">85   </span></a>                                .channel(sharedPreferences.getString(&quot;coasId&quot;, &quot;&quot;)) 
+<a name="l86"><span class="ln">86   </span></a>                                .async(new PNCallback&lt;PNPublishResult&gt;() { 
+<a name="l87"><span class="ln">87   </span></a>                                    @Override 
+<a name="l88"><span class="ln">88   </span></a>                                    public void onResponse(PNPublishResult result, PNStatus status) { 
+<a name="l89"><span class="ln">89   </span></a>                                        // handle publish result, status always present, result if successful 
+<a name="l90"><span class="ln">90   </span></a>                                        // status.isError() to see if error happened 
+<a name="l91"><span class="ln">91   </span></a>                                        if (!status.isError()) { 
+<a name="l92"><span class="ln">92   </span></a>                                            System.out.println(&quot;pub timetoken: &quot; + result.getTimetoken()); 
+<a name="l93"><span class="ln">93   </span></a>                                        } 
+<a name="l94"><span class="ln">94   </span></a>                                        System.out.println(&quot;pub status code: &quot; + status.getStatusCode()); 
+<a name="l95"><span class="ln">95   </span></a>                                    } 
+<a name="l96"><span class="ln">96   </span></a>                                });*/
+                    }
+
+
+                }, Looper.myLooper());
+
+            } <span class="s0">catch </span>(SecurityException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    @Override
+    <span class="s0">public void </span>onRequestPermissionsResult(<span class="s0">int </span>requestCode, @NonNull String[] permissions, @NonNull <span class="s0">int</span>[] grantResults) {
+        <span class="s0">super</span>.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        <span class="s0">if </span>(requestCode == <span class="s3">99</span>) {
+            <span class="s0">boolean </span>granted = grantResults[<span class="s3">0</span>] == PackageManager.PERMISSION_GRANTED;
+            <span class="s4">/*boolean granted2 = grantResults[1] == PackageManager.PERMISSION_GRANTED;*/</span>
+            <span class="s0">if </span>(granted) {
+                sendUpdatedLocationMessage();
+            }
+            <span class="s0">new </span>GetCountries().execute();
+
+        }
+    }
+
+    <span class="s0">private </span>LinkedHashMap&lt;String, String&gt; getNewLocationMessage(<span class="s0">double </span>lat, <span class="s0">double </span>lng) {
+        SharedPreferences sharedPreferences = getSharedPreferences(CAR_DETAILS, Context.MODE_PRIVATE);
+        LinkedHashMap&lt;String, String&gt; map = <span class="s0">new </span>LinkedHashMap&lt;String, String&gt;();
+        map.put(<span class="s2">&quot;lat&quot;</span>, String.valueOf(lat));
+        map.put(<span class="s2">&quot;lng&quot;</span>, String.valueOf(lng));
+        map.put(<span class="s2">&quot;veh_id&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;vehicle_id&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+        map.put(<span class="s2">&quot;veh_name&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;vehicle_name&quot;</span>, <span class="s2">&quot;&quot;</span>));
+        map.put(<span class="s2">&quot;veh_num&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;vehicle_num&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+        map.put(<span class="s2">&quot;veh_desc&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;vehicle_desc&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+        map.put(<span class="s2">&quot;seats&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;seats&quot;</span>, <span class="s2">&quot;4&quot;</span>));
+        map.put(<span class="s2">&quot;veh_cat&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;category&quot;</span>, <span class="s2">&quot;&quot;</span>));
+        map.put(<span class="s2">&quot;veh_image&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;vehicle_image&quot;</span>, <span class="s2">&quot;&quot;</span>));
+        APPHelper.showLog(<span class="s2">&quot;CarDetails&quot;</span>, map.toString());
+        <span class="s0">return </span>map;
+    }
+
+    <span class="s0">class </span>UpdateLoc <span class="s0">extends </span>AsyncTask&lt;String, Void, String&gt; {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+
+        @Override
+        <span class="s0">protected </span>String doInBackground(String... strings) {
+            HashMap&lt;String, String&gt; map = <span class="s0">new </span>HashMap&lt;&gt;();
+            map.put(<span class="s2">&quot;user_id&quot;</span>, sharedPreferences.getString(<span class="s2">&quot;userId&quot;</span>, <span class="s2">&quot;0&quot;</span>));
+            map.put(<span class="s2">&quot;lat&quot;</span>, lat);
+            map.put(<span class="s2">&quot;lng&quot;</span>, lng);
+            <span class="s0">return new </span>RequestHandler().sendPostRequest(MAIN_URL + <span class="s2">&quot;update_location.php&quot;</span>, map);
+        }
+
+        @Override
+        <span class="s0">protected void </span>onPostExecute(String s) {
+            <span class="s0">super</span>.onPostExecute(s);
+            APPHelper.showLog(<span class="s2">&quot;Loc&quot;</span>, s);
+        }
+    }
+
+    <span class="s0">class </span>GetCountries <span class="s0">extends </span>AsyncTask&lt;Void, Void, String&gt; {
+
+        @Override
+        <span class="s0">protected void </span>onPreExecute() {
+            <span class="s0">super</span>.onPreExecute();
+            findViewById(R.id.layoutProgress).setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        <span class="s0">protected </span>String doInBackground(Void... voids) {
+            <span class="s0">return new </span>RequestHandler().sendGetRequest(MAIN_URL + <span class="s2">&quot;get_countries.php&quot;</span>);
+        }
+
+        @Override
+        <span class="s0">protected void </span>onPostExecute(String s) {
+            <span class="s0">super</span>.onPostExecute(s);
+            findViewById(R.id.layoutProgress).setVisibility(View.GONE);
+            SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
+            sharedPreferences.edit().putString(<span class="s2">&quot;countries&quot;</span>, s).apply();
+            bottomNavigationView.setVisibility(View.VISIBLE);
+            bottomNavigationView.setSelectedItemId(R.id.navigation_messsenger);
+
+        }
+    }
+
+}
+</pre>
+</body>
+</html>

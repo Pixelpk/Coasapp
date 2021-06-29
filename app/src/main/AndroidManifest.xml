@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.coasapp.coas">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PROFILE" /> -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.mobicomkit.sample.permission.MAPS_RECEIVE" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- [QRCode] -->
+
+    <permission
+        android:name="com.coasapp.sample.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <application
+        android:name=".ApplozicSampleApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher_coas"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_coas_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity android:name=".Pleasepaycash"></activity>
+        <activity android:name=".payment.Payalpayment"></activity>
+        <activity
+            android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".call.IncomingCallRingActivity"
+            android:excludeFromRecents="true"
+            android:keepScreenOn="true"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".connectycube.CallService" />
+
+        <activity
+            android:name=".connectycube.CallDetailsActivity"
+            android:label="Call Info" />
+        <activity
+            android:name=".connectycube.CallHistoryActivity"
+            android:label="Call History" />
+        <activity
+            android:name=".connectycube.ChatSettingsActivity"
+            android:label="Messenger Settings" />
+        <activity
+            android:name=".connectycube.ForwardMessageActivity"
+            android:label="Forward Message"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bargain.BarginDetailsActivityNonPayment"
+            android:screenOrientation="portrait" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".general.MyLocationActivity"
+            android:label="@string/title_activity_my_location" />
+        <activity android:name=".general.KotlinSampleActivity" />
+        <activity
+            android:name=".general.NotificationDetail"
+            android:label="Notification" />
+        <activity
+            android:name=".roombook.BookedDatesActivity"
+            android:label="Available Dates"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bargain.BargainLinkActivity"
+            android:label="Bargain to Driver">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="coasapp.com"
+                    android:pathPrefix="/bargain"
+                    android:scheme="http" />
+                <data
+                    android:host="coasapp.com"
+                    android:pathPrefix="/bargain"
+                    android:scheme="https" />
+                <data
+                    android:host="www.coasapp.com"
+                    android:pathPrefix="/bargain"
+                    android:scheme="http" />
+                <data
+                    android:host="www.coasapp.com"
+                    android:pathPrefix="/bargain"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".roombook.NegotiableRentActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gonextinfo.site"
+                    android:pathPrefix="/renting"
+                    android:scheme="http" />
+                <data
+                    android:host="gonextinfo.site"
+                    android:pathPrefix="/renting"
+                    android:scheme="https" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".general.TicketMessagesActivity" />
+        <activity
+            android:name=".general.NewTicketActivity"
+            android:label="Create Ticket" />
+        <activity
+            android:name=".general.UserDetailsActivity"
+            android:label="User Details" />
+        <activity
+            android:name=".general.FullScreenImageActivity"
+            android:label="" />
+        <activity
+            android:name=".general.TicketListActivity"
+            android:label="Ticket" />
+        <activity android:name=".general.PayoutHomeActivity" />
+        <activity android:name=".shopping.ReportMessagesActivity" />
+        <activity android:name=".general.WebViewActivity" />
+        <activity
+            android:name=".general.PayoutHistoryActivity"
+            android:label="Payout History"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".general.PayoutActivity"
+            android:label="Payout Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".general.MyAppCompatActivity"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public" />
+            <!--
+                <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public" />
+            -->
+        </provider>
+
+        <meta-data
+            android:name="sendotp.key"
+            android:value="257376AuHg2guv5c42675a" />
+        <!--
+        <activity
+            android:name="com.applozic.audiovideo.activity.AudioCallActivityV2"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Applozic_FullScreen_Theme" />
+
+        <activity
+            android:name="com.applozic.audiovideo.activity.CallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/Applozic_FullScreen_Theme" />
+
+        <activity
+            android:name="com.applozic.audiovideo.activity.VideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Applozic_FullScreen_Theme"></activity>
+        -->
+        <meta-data
+            android:name="com.applozic.loginActivity"
+            android:value="com.mobicomkit.sample.LoginActivity" />
+        <!--
+<service
+            android:name=".pushnotification.FcmListenerService"
+            android:exported="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.coasapp.notification.smallIcon"
+            android:resource="@mipmap/coasicon192" /> <!-- Launcher white Icon -->
+        <meta-data
+            android:name="com.applozic.application.key"
+            android:value="@string/application_key" />
+        <meta-data
+            android:name="com.applozic.server.url"
+            android:value="@string/default_server_url" />
+        <meta-data
+            android:name="com.applozic.mqtt.server.url"
+            android:value="@string/default_mqtt_server_url" />
+        <meta-data
+            android:name="main_folder_name"
+            android:value="@string/default_media_location_folder" />
+        <meta-data
+            android:name="com.applozic.take.order.userId"
+            android:value="@string/take_order_userid" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.package.name"
+            android:value="${applicationId}" />
+
+        <activity
+            android:name=".sendbird.call.VideoCallActivity"
+            android:configChanges="orientation|smallestScreenSize|screenSize|screenLayout"
+            android:keepScreenOn="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/CallTheme"
+            tools:ignore="LockedOrientationActivity" />
+
+        <meta-data
+            android:name="share_text"
+            android:value="@string/invite_message" />
+        <meta-data
+            android:name="com.coasapp.uiwidgets.toolbar.tap.activity"
+            android:value="com.mobicomkit.sample.MainActivity" />
+        <meta-data
+            android:name="activity.open.on.notification"
+            android:value="com.mobicomkit.uiwidgets.conversation.activity.ConversationActivity" />
+        <meta-data
+            android:name="activity.open.on.call.button.click"
+            android:value="com.mobicomkit.sample.MainActivity" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9b43bb084d2988834ffc7cc5c9de46ad80356861" /> <!-- Applozic Services -->
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".general.SplashScreenActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".general.COASLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".general.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".roombook.RoomBookingActivity"
+            android:label="Book this Room"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".roombook.RoomDetailsActivity"
+            android:label="Room Details"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".roombook.BookingHistoryActivity"
+            android:label="Booking History" />
+        <activity
+            android:name=".general.COASHomeActivity"
+            android:label="Home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="www.youtube.com"
+                    android:mimeType="text/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".general.NewRegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".roombook.MyRoomsActivity"
+            android:label="My Rooms"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".general.VideoViewActivity"
+            android:configChanges="screenSize|orientation"
+            android:label="Video" />
+        <activity
+            android:name=".roombook.AddRoomActivity"
+            android:label="Add Room"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".roombook.EditRoomActivity"
+            android:label="Edit Room"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.ProductsActivity"
+            android:label="Products"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".shopping.ProductDetailsActivity"
+            android:label="Product Details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".shopping.AddProductActivity"
+            android:label="Add your product"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.EditProductActivity"
+            android:label="Edit your product"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.MyProductsActivity"
+            android:label="My Products" />
+        <activity
+            android:name=".shopping.SellerCategoriesActivity"
+            android:label="Select Category"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.CartActivity"
+            android:label="Checkout" />
+        <activity
+            android:name=".shopping.BuyerOrdersActivity"
+            android:label="Order History" />
+        <activity
+            android:name=".shopping.SellerOrdersActivity"
+            android:label="My Sales" />
+        <activity
+            android:name=".shopping.AddressesActivity"
+            android:label="Your Addresses"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.AddAddressActivity"
+            android:label="Add Address"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.UpdateOrderActivity"
+            android:label="Update Tracking"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".shopping.OrderDetailsActivity"
+            android:label="Order Details" />
+        <activity
+            android:name=".general.MyAccountActivity"
+            android:label="My Account" />
+        <activity
+            android:name=".roombook.MyBookingsActivity"
+            android:label="My Hosting" />
+        <activity
+            android:name=".roombook.BookingDetailsActivity"
+            android:label="Booking Details" />
+        <activity
+            android:name=".shopping.EditAddressActivity"
+            android:label="Manage Address"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bargain.ManageVehicleActivity"
+            android:label="Become A Driver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".general.NotificationsActivity"
+            android:label="Notifications"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bargain.RequestActivity"
+            android:label="Send Request" />
+        <activity
+            android:name=".general.ChangePasswordActivity"
+            android:label="Change Password"
+            android:screenOrientation="portrait" />
+        <activity android:name=".bargain.VehicleDetailActivity" />
+        <activity
+            android:name=".bargain.VehicleMapsActivity"
+            android:label="Bargain" />
+        <activity
+            android:name=".bargain.MyVehiclesActivity"
+            android:label="My Vehicles"
+            android:screenOrientation="portrait" />
+        <activity android:name=".bargain.AddVehicleActivity" />
+
+        <service android:name=".bargain.UpdateLocationService" />
+
+        <activity
+            android:name=".bargain.VehicleDetailsActivity"
+            android:label="Vehicle Details" />
+        <activity
+            android:name=".general.RequestActivity"
+            android:label="Send Request" />
+        <activity
+            android:name=".general.ViewLocationActivity"
+            android:label="" />
+        <activity
+            android:name=".general.SelectAddressActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bargain.MyBargainRequests"
+            android:label="My Bargain Requests">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gonextinfo.site"
+                    android:pathPrefix="/bargain"
+                    android:scheme="http" />
+                <data
+                    android:host="gonextinfo.site"
+                    android:pathPrefix="/bargain"
+                    android:scheme="https" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".bargain.BargainDetailActivity"
+            android:label="Trip Details" />
+        <activity
+            android:name=".bargain.BargainHistoryActivity"
+            android:label="My Trips">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gonextinfo.site"
+                    android:pathPrefix="/bargain"
+                    android:scheme="http" />
+                <data
+                    android:host="gonextinfo.site"
+                    android:pathPrefix="/bargain"
+                    android:scheme="https" />
+            </intent-filter>
+            -->
+
+        </activity>
+
+        <service
+            android:name=".sendbird.call.CallService"
+            android:stopWithTask="false" />
+
+        <activity
+            android:name=".payment.StripePaymentActivity"
+            android:label="Proceed to Payment" />
+        <activity
+            android:name=".general.ForgotPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".roombook.UploadGovtIDActivity"
+            android:label="Upload Your Govt ID" />
+        <activity android:name=".roombook.RoomLocationActivity" />
+        <activity
+            android:name=".general.FullScreenImageSlide"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".bargain.TrackLocationActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <receiver
+            android:name=".utils.MySMSBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".call.RingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ringtone" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".sendbird.call.VoiceCallActivity"
+            android:configChanges="orientation|smallestScreenSize|screenSize|screenLayout"
+            android:keepScreenOn="true"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:theme="@style/CallTheme"
+            tools:ignore="LockedOrientationActivity" />
+        <!--
+   <service
+            android:name=".sendbird.fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        -->
+        <activity
+            android:name="com.connectycube.messenger.ChatDialogActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.connectycube.messenger.ChatMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name="com.connectycube.messenger.CreateChatDialogActivity"></activity>
+        <activity
+            android:name="com.connectycube.messenger.ChatDialogDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.connectycube.messenger.EditTextActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.connectycube.messenger.SettingsActivity"
+            android:label="@string/settings_label" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.connectycube.messenger.AttachmentPreviewActivity"
+            android:label="@string/attachment_preview_label"
+            android:theme="@style/AppTheme.DarkTitle" />
+        <activity
+            android:name="com.connectycube.messenger.OccupantPreviewActivity"
+            android:label="@string/occupant_preview_label" />
+        <activity
+            android:name="com.connectycube.messenger.CreateChatDialogDetailActivity"
+            android:label="@string/create_chat_detail_preview_label" />
+        <activity
+            android:name="com.connectycube.messenger.SelectUsersActivity"
+            android:label="@string/title_select_users_activity" />
+        <activity android:name="com.connectycube.messenger.SelectUsersFromExistActivity" />
+        <activity
+            android:name="com.connectycube.messenger.CallActivity"
+            android:excludeFromRecents="true"
+            android:keepScreenOn="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.connectycube.messenger.SelectCallMembersActivity"
+            android:label="@string/title_select_call_members" />
+        <activity
+            android:name=".call.CallActivity"
+            android:keepScreenOn="true"
+            android:showOnLockScreen="true" />
+        <activity
+            android:name=".call.VideoCallActivity"
+            android:configChanges="orientation|smallestScreenSize|screenSize|screenLayout"
+            android:keepScreenOn="true"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:theme="@style/CallTheme"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".call.VoiceCallActivity"
+            android:configChanges="orientation|smallestScreenSize|screenSize|screenLayout"
+            android:keepScreenOn="true"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true"
+            android:theme="@style/CallTheme"
+            tools:ignore="LockedOrientationActivity" />
+
+        <service
+            android:name="com.connectycube.messenger.fcm.PushListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.connectycube.messenger.SendFastReplyMessageService" />
+        <service android:name=".ContactSyncService" />
+        <service
+            android:name=".utils.OnClearFromRecentServices"
+            android:stopWithTask="false" />
+        <service android:name=".utils.ChatConnectionService" />
+        <service
+            android:name=".call.CallService"
+            android:keepScreenOn="true"
+            android:stopWithTask="false" />
+
+        <meta-data
+            android:name="com.connectycube.pushnotifications.TYPE"
+            android:value="FCM" />
+        <meta-data
+            android:name="com.connectycube.pushnotifications.SENDER_ID"
+            android:value="@string/sender_id" />
+        <meta-data
+            android:name="com.connectycube.pushnotifications.ENVIRONMENT"
+            android:value="PRODUCTION" />
+    </application>
+
+</manifest>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bursa_bg" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/app_text" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageViewProfile"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:visibility="gone"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:srcCompat="@mipmap/profile_picture" />
+
+                <TextView
+                    android:id="@+id/textViewPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/upload_profile_picture"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name"
+                android:inputType="textCapSentences"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name"
+                android:inputType="textCapSentences"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:maxLength="@string/phone_length"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"
+                android:textColor="#fff"
+                android:textColorHint="#fafafa"
+                app:backgroundTint="#fff" />
+
+
+            <ImageView
+                android:id="@+id/buttonRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/enter_large" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/progress_dialog" />
+</RelativeLayout>

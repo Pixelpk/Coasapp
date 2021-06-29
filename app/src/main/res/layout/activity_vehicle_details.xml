@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/big_bg"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context="com.coasapp.coas.bargain.VehicleDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/imageViewVehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp"
+                    android:adjustViewBounds="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Driver" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageViewSeller"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="8dp"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic[11]" />
+
+                    <TextView
+                        android:id="@+id/textViewSeller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="TextView" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewVehicleName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="TextView"
+                    android:textColor="@color/colorAccent"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:id="@+id/textViewVehicleDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="TextView"
+                    tools:text="@tools:sample/full_names" />
+
+                <TextView
+                    android:id="@+id/textViewVehicleSeats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Seats: 5"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Driver Rating: " />
+
+                    <RatingBar
+                        android:id="@+id/ratingBarDriver"
+                        style="@style/Widget.AppCompat.RatingBar.Indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:numStars="5" />
+
+                    <TextView
+                        android:id="@+id/textViewReviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Reviews" />
+                </LinearLayout>
+
+                <TextView
+                    android:text="@string/please_agree_on_a_price_first_through_chatting_then_click_on_the_car_icon_to_send_a_delivery_request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/buttonRequest"
+            style="@style/DefaultButtonStyle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Request" />
+    </LinearLayout>
+
+
+<include layout="@layout/progress_dialog"/>
+</RelativeLayout>

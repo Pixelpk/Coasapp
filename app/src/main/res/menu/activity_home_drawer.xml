@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@mipmap/home"
+        android:title="HOME" />
+    <item
+        android:id="@+id/nav_notifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="NOTIFICATIONS"
+        app:actionLayout="@layout/menu_counter" />
+
+    <group
+        android:id="@+id/customer"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_booking_history"
+            android:icon="@mipmap/motel"
+            android:title="BOOKING HISTORY" />
+        <item
+            android:id="@+id/nav_order_history"
+            android:icon="@mipmap/mall"
+            android:title="ORDER HISTORY" />
+        <item
+            android:id="@+id/nav_address"
+            android:icon="@mipmap/mall"
+            android:title="MY ADDRESSES" />
+        <item
+            android:id="@+id/nav_my_trips"
+            android:icon="@mipmap/sportscar"
+            android:title="MY TRIPS" />
+    </group>
+
+
+    <group
+        android:id="@+id/seller"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_manage_rooms"
+            android:icon="@mipmap/motel"
+            android:title="HOST NOW" />
+        <item
+            android:id="@+id/nav_manage_bookings"
+            android:icon="@mipmap/motel"
+            android:title="MANAGE YOUR HOSTING" />
+        <item
+            android:id="@+id/nav_manage_products"
+            android:icon="@mipmap/mall"
+            android:title="SELL PRODUCTS" />
+        <item
+            android:id="@+id/nav_seller_orders"
+            android:icon="@mipmap/mall"
+            android:title="MY SALES" />
+
+
+        <item
+            android:id="@+id/nav_manage_vehicles"
+            android:icon="@mipmap/sportscar"
+            android:title="DRIVER PROFILE" />
+
+
+        <item
+            android:id="@+id/nav_my_bargains"
+            android:icon="@mipmap/sportscar"
+            android:title="BARGAIN REQUESTS" />
+    </group>
+    <item
+        android:id="@+id/nav_payout"
+        android:icon="@mipmap/give_money"
+        android:title="PAYOUT" />
+
+    <item
+        android:id="@+id/nav_support"
+        android:icon="@mipmap/support"
+        android:title="SUPPORT" />
+    <item
+        android:id="@+id/nav_change_password"
+        android:icon="@mipmap/lock"
+        android:title="CHANGE PIN" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@mipmap/signout"
+        android:title="LOGOUT" />
+
+</menu>
